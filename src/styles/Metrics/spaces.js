@@ -1,6 +1,6 @@
 const Spaces = {
-  BasePadding: '30px',
-  BaseMargin: '15px',
+  BasePadding: '10px',
+  BaseMargin: '10px',
 };
 
 export default Spaces;

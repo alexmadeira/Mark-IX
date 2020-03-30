@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { Fonts } from './Metrics';
+
 export default createGlobalStyle`
 * {
   margin: 0;
@@ -11,6 +13,9 @@ export default createGlobalStyle`
 *:focus{
   outline:0;
 }
+html{
+  font-size:${Fonts.Sizes.base}
+}
 html,
 body,
 #root {
@@ -20,8 +25,9 @@ body,
   justify-content:space-between;
   flex:1;
   z-index: 1;
-
+  font-family: 'Roboto', sans-serif;
 }
+
 body, input, button{
   font-size: 16px;
 }
@@ -31,6 +37,7 @@ body {
   text-rendering: optimizeLegibility !important;
   background: #fff;
   max-width: 100vw;
+  font-size:${Fonts.Sizes.root}
 }
 
 `;
