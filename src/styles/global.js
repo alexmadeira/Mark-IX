@@ -35,9 +35,8 @@ body, input, button{
 body {
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
-  background: #fff;
+  background: #000;
   max-width: 100vw;
   font-size:${Fonts.Sizes.root}
 }
-
 `;
