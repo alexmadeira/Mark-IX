@@ -74,7 +74,7 @@ export const MenuContainer = styled.ul`
   opacity: 0;
   visibility: hidden;
   background: ${Colors.Base};
-  z-index: 20;
+  z-index: 21;
   transition: all 0.5s ease;
   transform: translate(-50%, -50%);
   display: flex;
