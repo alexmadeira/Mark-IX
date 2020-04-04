@@ -42,7 +42,7 @@ export const SquaresMiddle = styled(Squares)``;
 export const SquaresBottom = styled(Squares)``;
 
 export const SquaresMenu = styled.span`
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   margin: calc(${Spaces.BasePadding} * 3);

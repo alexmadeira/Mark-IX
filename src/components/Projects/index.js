@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 export default function Projects() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <Container>
       <SquaresMenu

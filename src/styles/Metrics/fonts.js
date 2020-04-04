@@ -11,6 +11,11 @@ const Fonts = {
     Menu: {
       link: '5.7rem',
     },
+    Sobre: {
+      title: '6rem',
+      subTitile: '4.5rem',
+      text: '1.8rem',
+    },
   },
   family: {},
 };

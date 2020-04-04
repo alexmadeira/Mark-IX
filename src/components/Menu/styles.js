@@ -5,7 +5,7 @@ import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 export const Container = styled.nav``;
 
 export const Hamburguer = styled.span`
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   margin: calc(${Spaces.BasePadding} * 3);
