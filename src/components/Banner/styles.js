@@ -6,7 +6,7 @@ import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
 export const Container = styled.div`
   max-width: 655px;
-  width: 50vw;
+  width: 50%;
   background: ${saturate(0.2, tint(0.5, Colors.Base))};
   padding: calc(${Spaces.BasePadding} * 3);
   color: ${Colors.White};
@@ -15,6 +15,13 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 780px) {
+    padding: calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 7)
+      calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 3);
+    max-width: initial;
+    width: 100%;
+    height: 50%;
+  }
 `;
 export const Header = styled.div`
   width: 100%;
@@ -25,6 +32,7 @@ export const Spotlight = styled.div`
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
+
   h1 {
     font-weight: bold;
     font-size: ${Fonts.Sizes.Banner.spotlight};
@@ -32,11 +40,28 @@ export const Spotlight = styled.div`
     text-transform: uppercase;
     text-align: left;
     flex: 1;
+    @media (max-width: 780px) {
+      font-size: calc(${Fonts.Sizes.Banner.spotlight} - 4rem);
+      line-height: calc(${Fonts.Sizes.Banner.spotlight} - 4rem);
+      flex: initial;
+      margin-right: ${Spaces.BaseMargin};
+    }
+  }
+  @media (max-width: 980px) and (min-width: 780px) {
+    flex-direction: column;
+  }
+  @media (max-width: 780px) {
+    align-items: center;
+    justify-content: flex-start;
   }
 `;
 export const Emoji = styled.img`
   width: 35%;
   margin-right: calc(${Spaces.BaseMargin}*2);
+
+  @media (max-width: 780px) {
+    width: 15%;
+  }
 `;
 
 export const Highlighted = styled.h2`
@@ -48,6 +73,9 @@ export const Highlighted = styled.h2`
 
 export const Project = styled.div`
   width: 80%;
+  @media (max-width: 680px) {
+    width: 100%;
+  }
 `;
 export const Title = styled.h3`
   font-weight: normal;
@@ -77,6 +105,9 @@ export const Paragraph = styled.p`
   font-weight: normal;
   font-size: ${Fonts.Sizes.Banner.paragraph};
   line-height: calc(${Fonts.Sizes.Banner.paragraph} + 10px);
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const Social = styled.ul`
@@ -90,6 +121,9 @@ export const SocialItem = styled.li`
   a {
     color: ${Colors.White};
     font-size: 2rem;
+    @media (max-width: 500px) {
+      font-size: 3rem;
+    }
     svg {
       transition: all 0.3s ease;
     }
