@@ -126,7 +126,7 @@ export const SquaresMenu = styled.span`
 `;
 
 export const ProjectsList = styled.ul`
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   opacity: 1;

@@ -66,7 +66,7 @@ export const Hamburguer = styled.span`
 `;
 
 export const MenuContainer = styled.ul`
-  position: absolute;
+  position: fixed;
   height: 0%;
   width: 0%;
   left: 50%;
