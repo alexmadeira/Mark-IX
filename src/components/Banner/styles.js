@@ -19,8 +19,12 @@ export const Container = styled.div`
     padding: calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 7)
       calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 3);
     max-width: initial;
-    width: 100%;
-    height: 50%;
+    width: 100vw;
+    height: auto;
+  }
+
+  @media (max-width: 780px) and (orientation: landscape) {
+    height: auto;
   }
 `;
 export const Header = styled.div`
@@ -41,8 +45,8 @@ export const Spotlight = styled.div`
     text-align: left;
     flex: 1;
     @media (max-width: 780px) {
-      font-size: calc(${Fonts.Sizes.Banner.spotlight} - 4rem);
-      line-height: calc(${Fonts.Sizes.Banner.spotlight} - 4rem);
+      font-size: calc(${Fonts.Sizes.Banner.spotlight});
+      line-height: calc(${Fonts.Sizes.Banner.spotlight});
       flex: initial;
       margin-right: ${Spaces.BaseMargin};
     }
@@ -62,6 +66,13 @@ export const Emoji = styled.img`
   @media (max-width: 780px) {
     width: 15%;
   }
+  @media (max-width: 680px) {
+    width: 20%;
+  }
+  @media (max-width: 390px) {
+    width: 35%;
+    margin-bottom: calc(${Spaces.BaseMargin}*2);
+  }
 `;
 
 export const Highlighted = styled.h2`
@@ -69,12 +80,18 @@ export const Highlighted = styled.h2`
   font-size: ${Fonts.Sizes.Banner.highlighted};
   line-height: calc(${Fonts.Sizes.Banner.highlighted} + 10px);
   text-transform: uppercase;
+  @media (max-width: 970px) {
+    text-align: center;
+  }
+  @media (max-width: 780px) {
+    text-align: left;
+  }
 `;
 
 export const Project = styled.div`
   width: 80%;
-  @media (max-width: 680px) {
-    width: 100%;
+  @media (max-width: 970px) {
+    width: 95%;
   }
 `;
 export const Title = styled.h3`
@@ -105,8 +122,9 @@ export const Paragraph = styled.p`
   font-weight: normal;
   font-size: ${Fonts.Sizes.Banner.paragraph};
   line-height: calc(${Fonts.Sizes.Banner.paragraph} + 10px);
-  @media (max-width: 500px) {
-    display: none;
+  @media (max-width: 970px) {
+    font-size: calc(${Fonts.Sizes.Banner.paragraph} + 0.5rem);
+    line-height: calc(${Fonts.Sizes.Banner.paragraph} + 0.5rem + 10px);
   }
 `;
 
