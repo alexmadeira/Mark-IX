@@ -21,7 +21,7 @@ export default function Menu() {
           <Link to="/sobre">Sobre</Link>
         </MenuItem>
         <MenuItem>
-          <Link to="/projetos">Projetos</Link>
+          <button type="button">Projetos</button>
         </MenuItem>
       </MenuContainer>
     </Container>

@@ -119,12 +119,17 @@ export const MenuItem = styled.li`
       width: calc(50% - 70px);
     }
   }
-  a {
+  a,
+  button {
     flex: 1;
     width: 100%;
     color: currentColor;
     font-size: ${Fonts.Sizes.Menu.link};
     line-height: calc(${Fonts.Sizes.Menu.link});
     margin: 0 ${Spaces.BasePadding};
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
   }
 `;
