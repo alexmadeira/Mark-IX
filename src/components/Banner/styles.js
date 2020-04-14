@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { saturate, tint } from 'polished';
 
+import RandonEmoji from '~/components/Emoji';
 import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
 export const Container = styled.div`
@@ -59,9 +60,15 @@ export const Spotlight = styled.div`
     justify-content: flex-start;
   }
 `;
-export const Emoji = styled.img`
+export const Emoji = styled(RandonEmoji)`
   width: 35%;
   margin-right: calc(${Spaces.BaseMargin}*2);
+  transform: rotate(-25deg);
+  padding: calc(${Spaces.BasePadding});
+
+  @media (max-width: 980px) and (min-width: 780px) {
+    transform: rotate(0deg);
+  }
 
   @media (max-width: 780px) {
     width: 15%;

@@ -1,13 +1,11 @@
 import React from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 
-import emoji from '~/assets/emojis/01.png';
-
 import {
   Container,
   Header,
-  Spotlight,
   Emoji,
+  Spotlight,
   Highlighted,
   Project,
   Title,
@@ -22,7 +20,7 @@ export default function Banner() {
     <Container>
       <Header>
         <Spotlight>
-          <Emoji src={emoji} alt="" />
+          <Emoji />
           <h1>Alex</h1>
           <h1>Madeira</h1>
         </Spotlight>
@@ -41,17 +39,29 @@ export default function Banner() {
       </Project>
       <Social>
         <SocialItem>
-          <a href="/#">
+          <a
+            href="https://www.instagram.com/alex.c.madeira/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram />
           </a>
         </SocialItem>
         <SocialItem>
-          <a href="/#">
+          <a
+            href="https://www.linkedin.com/in/alex-madeira/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedinIn />
           </a>
         </SocialItem>
         <SocialItem>
-          <a href="/#">
+          <a
+            href="https://bitbucket.org/alexmadeira5/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaBitbucket />
           </a>
         </SocialItem>

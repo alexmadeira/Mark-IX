@@ -2,7 +2,7 @@ import React from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import Logo from '~/assets/emojis/01.png';
+// import Logo from '~/assets/emojis/01.png';
 import code from '~/assets/temp/code.jpg';
 import Menu from '~/components/Menu';
 import Projects from '~/components/Projects';
@@ -30,9 +30,7 @@ export default function Sobre() {
       <Menu />
       <Projects />
       <Header>
-        <Link to="/">
-          <img src={Logo} alt="" />
-        </Link>
+        <Link to="/">{/* <img src={Logo} alt="" /> */}</Link>
       </Header>
       <ContentBox>
         <Title>Etiam elementum diam in dui lacinia efficitur.</Title>
