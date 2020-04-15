@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { requestProjects } from '~/store/modules/banner/actions';
+
+import Nav from './Nav';
+import Project from './Project';
 import {
   Container,
   Header,
   Emoji,
   Spotlight,
   Highlighted,
-  Project,
-  Title,
-  Timer,
-  Paragraph,
   Social,
   SocialItem,
-  Nav,
-  Step,
-  Next,
-  Prev,
 } from './styles';
 
 export default function Banner() {
+  const dispatch = useDispatch();
+  const loaded = useSelector(state => state.banner.loaded);
+
+  useEffect(() => {
+    function getProjects() {
+      if (!loaded) {
+        dispatch(requestProjects(8));
+      }
+    }
+    getProjects();
+  }, [dispatch, loaded]);
+
   return (
     <Container>
       <Header>
@@ -30,17 +39,7 @@ export default function Banner() {
         </Spotlight>
         <Highlighted>DESENVOLVEDOR WEB </Highlighted>
       </Header>
-      <Project>
-        <Title>Mizuno E-commerce</Title>
-        <Timer />
-        <Paragraph>
-          Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum,
-          blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel
-          enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet
-          hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum
-          ultrices mauris.
-        </Paragraph>
-      </Project>
+      <Project />
       <Social>
         <SocialItem>
           <a
@@ -70,13 +69,7 @@ export default function Banner() {
           </a>
         </SocialItem>
       </Social>
-      <Nav>
-        <Prev />
-        <Step>
-          <strong>01/</strong>08
-        </Step>
-        <Next />
-      </Nav>
+      <Nav />
     </Container>
   );
 }

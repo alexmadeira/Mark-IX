@@ -95,46 +95,6 @@ export const Highlighted = styled.h2`
   }
 `;
 
-export const Project = styled.div`
-  width: 80%;
-  @media (max-width: 970px) {
-    width: 95%;
-  }
-`;
-export const Title = styled.h3`
-  font-weight: normal;
-  font-size: ${Fonts.Sizes.Banner.title};
-  line-height: calc(${Fonts.Sizes.Banner.title} + 10px);
-`;
-
-export const Timer = styled.div`
-  background: #fff;
-  width: 100%;
-  height: 1px;
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-    background: ${Colors.White};
-    width: 50%;
-    height: 5px;
-  }
-`;
-
-export const Paragraph = styled.p`
-  margin-top: calc(${Spaces.BaseMargin}*4);
-  font-weight: normal;
-  font-size: ${Fonts.Sizes.Banner.paragraph};
-  line-height: calc(${Fonts.Sizes.Banner.paragraph} + 10px);
-  @media (max-width: 970px) {
-    font-size: calc(${Fonts.Sizes.Banner.paragraph} + 0.5rem);
-    line-height: calc(${Fonts.Sizes.Banner.paragraph} + 0.5rem + 10px);
-  }
-`;
-
 export const Social = styled.ul`
   display: flex;
   justify-content: flex-start;
@@ -157,61 +117,5 @@ export const SocialItem = styled.li`
         transform: scale(1.2);
       }
     }
-  }
-`;
-
-export const Nav = styled.div`
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translate(0px, -50%);
-  margin: calc(${Spaces.BaseMargin} * 3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-export const Step = styled.div`
-  font-weight: normal;
-  font-size: ${Fonts.Sizes.Banner.step};
-  line-height: calc(${Fonts.Sizes.Banner.step});
-  margin: calc(${Spaces.BaseMargin} * 2) 0;
-  strong {
-    font-size: ${Fonts.Sizes.Banner.actualStep};
-    line-height: calc(${Fonts.Sizes.Banner.actualStep});
-  }
-`;
-export const Prev = styled.div`
-  background: ${Colors.White};
-  height: 15vh;
-  width: 1px;
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: -15px;
-    height: 30px;
-    width: 30px;
-    border-left: 1px solid ${Colors.White};
-    border-top: 1px solid ${Colors.White};
-    transform: rotate(45deg);
-  }
-`;
-export const Next = styled.div`
-  background: ${Colors.White};
-  height: 15vh;
-  width: 1px;
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 6px;
-    left: -15px;
-    height: 30px;
-    width: 30px;
-    border-right: 1px solid ${Colors.White};
-    border-bottom: 1px solid ${Colors.White};
-    transform: rotate(45deg);
   }
 `;

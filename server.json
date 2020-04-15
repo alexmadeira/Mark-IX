@@ -1,7 +1,22 @@
 {
   "projects": [
-    { "id": 1, "title": "Mizuno" },
-    { "id": 2, "title": "Smiles" },
-    { "id": 3, "title": "ArtWalk" }
+    {
+      "id": 1,
+      "title": "Mizuno BR",
+      "type": "E-commerce",
+      "description": "Mizuno BR DESCRIÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris."
+    },
+    {
+      "id": 2,
+      "title": "Smiles",
+      "type": "Web Site",
+      "description": "SMILES DESCIRÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris."
+    },
+    {
+      "id": 3,
+      "title": "ArtWalk",
+      "type": "E-commerce",
+      "description": "ARTWALK DESCRIÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris."
+    }
   ]
 }

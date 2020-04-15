@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
 
-const reducers = combineReducers({});
+import banner from './banner/reducer';
+
+const reducers = combineReducers({
+  banner,
+});
 
 export default reducers;
