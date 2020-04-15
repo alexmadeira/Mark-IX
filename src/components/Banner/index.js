@@ -13,6 +13,10 @@ import {
   Paragraph,
   Social,
   SocialItem,
+  Nav,
+  Step,
+  Next,
+  Prev,
 } from './styles';
 
 export default function Banner() {
@@ -66,6 +70,13 @@ export default function Banner() {
           </a>
         </SocialItem>
       </Social>
+      <Nav>
+        <Prev />
+        <Step>
+          <strong>01/</strong>08
+        </Step>
+        <Next />
+      </Nav>
     </Container>
   );
 }
