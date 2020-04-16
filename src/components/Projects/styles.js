@@ -34,6 +34,9 @@ const Squares = styled.em`
     top: -2px;
     transition: all 0.5s ease;
   }
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 export const SquaresTop = styled(Squares)`
   margin-top: 0px;
