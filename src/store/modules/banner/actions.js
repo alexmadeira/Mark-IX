@@ -20,3 +20,9 @@ export function setActiveProject(active) {
     payload: { active },
   };
 }
+export function setRestartTimer(restart) {
+  return {
+    type: types.setRestartTimer,
+    payload: { restart },
+  };
+}

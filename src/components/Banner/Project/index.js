@@ -14,7 +14,7 @@ export default function Project() {
       <Title>
         {title} {type}
       </Title>
-      <Timer />
+      <Timer start={0} />
       <Paragraph>{description}</Paragraph>
     </Container>
   );

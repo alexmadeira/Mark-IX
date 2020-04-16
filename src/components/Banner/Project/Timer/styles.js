@@ -8,7 +8,9 @@ export const Container = styled.div`
   height: 1px;
   position: relative;
   &::after {
-    transition: width 20s linear;
+    transition: ${props =>
+      props.percent > 0 ? `width ${props.delay}ms linear` : ''};
+
     content: '';
     position: absolute;
     left: 0;
