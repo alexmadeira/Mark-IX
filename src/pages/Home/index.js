@@ -3,8 +3,9 @@ import React from 'react';
 import Banner from '~/components/Banner';
 import Menu from '~/components/Menu';
 import Projects from '~/components/Projects';
+import Project from '~/pages/Project';
 
-import { Container } from './styles';
+import { Container, Preview } from './styles';
 
 export default function Home() {
   return (
@@ -12,6 +13,9 @@ export default function Home() {
       <Menu />
       <Projects />
       <Banner />
+      <Preview>
+        <Project />
+      </Preview>
     </Container>
   );
 }

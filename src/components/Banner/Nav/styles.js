@@ -12,6 +12,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 10;
   @media (max-width: 780px) {
     left: 50%;
     top: initial;

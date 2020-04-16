@@ -37,7 +37,7 @@ export default function Banner() {
           <h1>Alex</h1>
           <h1>Madeira</h1>
         </Spotlight>
-        <Highlighted>DESENVOLVEDOR WEB </Highlighted>
+        <Highlighted>DESENVOLVEDOR WEB</Highlighted>
       </Header>
       <Project />
       <Social>
