@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   loaded: false,
   restart: true,
   pause: false,
+  open: false,
 };
 
 export default function banner(state = INITIAL_STATE, action) {
@@ -33,6 +34,11 @@ export default function banner(state = INITIAL_STATE, action) {
       }
       case types.restartTimer: {
         draft.pause = false;
+        break;
+      }
+      case types.openProject: {
+        draft.open = true;
+        draft.pause = true;
         break;
       }
 

@@ -43,6 +43,27 @@ body {
 }
 
 
+.page-enter {
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:0;
+  transition:all 350ms linear
+}
+.page-exit {
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:1;
+  transition:all 350ms linear
+}
+.page-enter-active {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+}
+
 @media(max-width: 1300px) {
   html{
     font-size:calc(${Fonts.Sizes.base} - 10%)

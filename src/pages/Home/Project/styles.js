@@ -1,29 +1,10 @@
 import styled from 'styled-components';
 
-import { Colors } from '~/styles/Metrics';
-
-export const Container = styled.div`
-  background: ${Colors.Black};
-  width: 100vw;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 2;
-  opacity: 0.5;
-  @media (max-width: 780px) {
-    position: initial;
-  }
-`;
+const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
 export const ProjectContainer = styled.div`
-  opacity: 0.8;
+  opacity: 0.2;
   color: #fff;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
   height: 200vw;
   width: 100%;
   h1 {
@@ -34,4 +15,27 @@ export const ProjectContainer = styled.div`
   img {
     width: 100%;
   }
+`;
+
+export const Container = styled.div`
+  width: 100vw;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 2;
+  transition: all ${openDelay}ms ease;
+  &.open {
+    left: 0%;
+    overflow: auto;
+    height: initial;
+    ${ProjectContainer} {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 780px) {
+    position: initial;
+  }
+  cursor: pointer;
 `;

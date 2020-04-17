@@ -7,6 +7,7 @@ import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
 export const Container = styled.div`
   width: 50%;
+  left: 0%;
   background: ${saturate(0.2, tint(0.5, Colors.Base))};
   padding: calc(${Spaces.BasePadding} * 3);
   color: ${Colors.White};
@@ -15,14 +16,23 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  transition: all 500ms ease;
+  position: relative;
+  &.open {
+    left: -100vw;
+  }
   @media (max-width: 780px) {
     padding: calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 7)
       calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 3);
     max-width: initial;
     width: 100vw;
     height: auto;
+    top: 0;
+    &.open {
+      left: 0;
+      top: -100vh;
+    }
   }
-
   @media (max-width: 780px) and (orientation: landscape) {
     height: auto;
   }
@@ -61,6 +71,7 @@ export const Spotlight = styled.div`
 `;
 export const Emoji = styled(RandonEmoji)`
   width: 35%;
+  max-width: 200px;
   margin-right: calc(${Spaces.BaseMargin}*2);
   transform: rotate(-25deg);
   padding: calc(${Spaces.BasePadding});

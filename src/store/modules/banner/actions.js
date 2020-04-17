@@ -36,3 +36,8 @@ export function restartTimer() {
     type: types.restartTimer,
   };
 }
+export function openProject() {
+  return {
+    type: types.openProject,
+  };
+}

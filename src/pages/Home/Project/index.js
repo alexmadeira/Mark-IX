@@ -1,23 +1,38 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { pauseTimer, restartTimer } from '~/store/modules/banner/actions';
+import history from '~/services/history';
+import {
+  pauseTimer,
+  restartTimer,
+  openProject,
+} from '~/store/modules/banner/actions';
 
 import { Container, ProjectContainer } from './styles';
 
 export default function Project() {
+  const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
   const dispatch = useDispatch();
-  const { title, banner } = useSelector(
+  const { title, banner, slug } = useSelector(
     state => state.banner.projects[state.banner.active]
   );
 
+  const { open } = useSelector(state => state.banner);
+
   return (
     <Container
+      className={open && 'open'}
       onMouseEnter={() => {
         dispatch(pauseTimer());
       }}
       onMouseLeave={() => {
         dispatch(restartTimer());
+      }}
+      onClick={() => {
+        dispatch(openProject());
+        setTimeout(() => {
+          history.push(`/projeto/${slug}`);
+        }, openDelay);
       }}
     >
       <ProjectContainer>

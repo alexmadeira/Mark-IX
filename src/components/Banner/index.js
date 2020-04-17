@@ -18,7 +18,7 @@ import {
 
 export default function Banner() {
   const dispatch = useDispatch();
-  const loaded = useSelector(state => state.banner.loaded);
+  const { loaded, open } = useSelector(state => state.banner);
 
   useEffect(() => {
     function getProjects() {
@@ -30,7 +30,7 @@ export default function Banner() {
   }, [dispatch, loaded]);
 
   return (
-    <Container>
+    <Container className={open && 'open'}>
       <Header>
         <Spotlight>
           <Emoji />
