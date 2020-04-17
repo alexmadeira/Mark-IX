@@ -15,18 +15,3 @@ export const Container = styled.div`
     min-height: 200vh;
   }
 `;
-
-export const Preview = styled.div`
-  background: #f00;
-  width: 100vw;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 2;
-  opacity: 0.5;
-  @media (max-width: 780px) {
-    position: initial;
-  }
-`;

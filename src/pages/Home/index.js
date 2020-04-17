@@ -5,7 +5,7 @@ import Menu from '~/components/Menu';
 import Projects from '~/components/Projects';
 
 import Project from './Project';
-import { Container, Preview } from './styles';
+import { Container } from './styles';
 
 export default function Home() {
   return (
@@ -13,9 +13,7 @@ export default function Home() {
       <Menu />
       <Projects />
       <Banner />
-      <Preview>
-        <Project />
-      </Preview>
+      <Project />
     </Container>
   );
 }
