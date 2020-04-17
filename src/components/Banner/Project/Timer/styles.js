@@ -10,6 +10,7 @@ export const Container = styled.div`
   &::after {
     content: '';
     transition: width ${props => props.delay}ms linear;
+
     position: absolute;
     left: 0;
     top: 50%;

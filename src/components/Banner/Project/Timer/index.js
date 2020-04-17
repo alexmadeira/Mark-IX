@@ -6,8 +6,9 @@ import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
 import { Container } from './styles';
 
 function Timer() {
-  const delay = 250;
+  const delay = 10000;
   // process.env.REACT_APP_BANNER_TIMER;
+  const timeOutDelay = delay / 100;
 
   const dispatch = useDispatch();
   const { active, projects, restart, pause } = useSelector(
@@ -19,10 +20,10 @@ function Timer() {
   const [loadNext, setLoadNext] = useState(false);
   function addTimer() {
     setTimerPercent(prevState => {
-      if (prevState + 5 > 100) {
+      if (prevState + 1 > 100) {
         setLoadNext(true);
       }
-      return prevState + 5;
+      return prevState + 1;
     });
   }
 
@@ -31,9 +32,9 @@ function Timer() {
     setTimeOut(
       setTimeout(() => {
         clock();
-      }, delay)
+      }, timeOutDelay)
     );
-  }, []);
+  }, [timeOutDelay]);
 
   useEffect(() => {
     if (restart) {
@@ -41,8 +42,6 @@ function Timer() {
       setTimerPercent(0);
       dispatch(startTimer(false));
       clock();
-    } else {
-      setTimeout(() => {}, delay);
     }
   }, [clock, delay, dispatch, restart, timeOut]);
 
@@ -69,7 +68,7 @@ function Timer() {
     loadNextBanner();
   }, [active, dispatch, loadNext, projects.length, timeOut, timerPercent]);
 
-  return <Container percent={timerPercent} delay={delay} />;
+  return <Container percent={timerPercent} delay={timeOutDelay} />;
 }
 
 export default memo(Timer);
