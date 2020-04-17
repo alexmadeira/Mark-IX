@@ -20,9 +20,19 @@ export function setActiveProject(active) {
     payload: { active },
   };
 }
-export function setRestartTimer(restart) {
+export function startTimer(restart) {
   return {
-    type: types.setRestartTimer,
+    type: types.startTimer,
     payload: { restart },
+  };
+}
+export function pauseTimer() {
+  return {
+    type: types.pauseTimer,
+  };
+}
+export function restartTimer() {
+  return {
+    type: types.restartTimer,
   };
 }

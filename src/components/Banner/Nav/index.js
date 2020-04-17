@@ -1,10 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  setActiveProject,
-  setRestartTimer,
-} from '~/store/modules/banner/actions';
+import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
 
 import { Container, Button, Step, Next, Prev } from './styles';
 
@@ -22,7 +19,7 @@ export default function Nav() {
 
   function changeBanner(banner) {
     dispatch(setActiveProject(banner));
-    dispatch(setRestartTimer(true));
+    dispatch(startTimer(true));
   }
 
   function load(direction) {

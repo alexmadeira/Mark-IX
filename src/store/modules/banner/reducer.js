@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   active: 0,
   loaded: false,
   restart: true,
+  pause: false,
 };
 
 export default function banner(state = INITIAL_STATE, action) {
@@ -22,8 +23,16 @@ export default function banner(state = INITIAL_STATE, action) {
         draft.restart = true;
         break;
       }
-      case types.setRestartTimer: {
+      case types.startTimer: {
         draft.restart = action.payload.restart;
+        break;
+      }
+      case types.pauseTimer: {
+        draft.pause = true;
+        break;
+      }
+      case types.restartTimer: {
+        draft.pause = false;
         break;
       }
 

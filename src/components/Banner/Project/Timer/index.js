@@ -1,48 +1,59 @@
 import React, { useState, memo, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  setActiveProject,
-  setRestartTimer,
-} from '~/store/modules/banner/actions';
+import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
 
 import { Container } from './styles';
 
 function Timer() {
-  const delay = process.env.REACT_APP_BANNER_TIMER;
+  const delay = 250;
+  // process.env.REACT_APP_BANNER_TIMER;
 
   const dispatch = useDispatch();
-  const restart = useSelector(state => state.banner.restart);
-  const { active, projects } = useSelector(state => state.banner);
+  const { active, projects, restart, pause } = useSelector(
+    state => state.banner
+  );
 
   const [timeOut, setTimeOut] = useState(null);
   const [timerPercent, setTimerPercent] = useState(0);
   const [loadNext, setLoadNext] = useState(false);
+  function addTimer() {
+    setTimerPercent(prevState => {
+      if (prevState + 5 > 100) {
+        setLoadNext(true);
+      }
+      return prevState + 5;
+    });
+  }
 
   const clock = useCallback(() => {
+    addTimer();
     setTimeOut(
       setTimeout(() => {
-        setTimerPercent(prevState => {
-          if (prevState + 10 > 100) {
-            setLoadNext(true);
-          }
-          return prevState + 10;
-        });
         clock();
       }, delay)
     );
-  }, [delay]);
+  }, []);
 
   useEffect(() => {
     if (restart) {
       clearTimeout(timeOut);
       setTimerPercent(0);
-      dispatch(setRestartTimer(false));
+      dispatch(startTimer(false));
       clock();
     } else {
       setTimeout(() => {}, delay);
     }
   }, [clock, delay, dispatch, restart, timeOut]);
+
+  useEffect(() => {
+    if (pause) {
+      clearTimeout(timeOut);
+      setTimeOut(false);
+    } else if (!timeOut) {
+      clock();
+    }
+  }, [clock, pause, timeOut]);
 
   useEffect(() => {
     function loadNextBanner() {
