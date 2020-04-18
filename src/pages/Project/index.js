@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
+import Menu from '~/components/Menu';
+import Projects from '~/components/Projects';
 import api from '~/services/api';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 
@@ -27,6 +29,8 @@ function Project({ match: { params } }) {
 
   return (
     <Container>
+      <Menu />
+      <Projects />
       <h1>{project.title}</h1>
       <img src={project.banner} alt="" />
       <img src={project.banner} alt="" />
