@@ -21,12 +21,9 @@ export default function Banner() {
   const { loaded, open } = useSelector(state => state.banner);
 
   useEffect(() => {
-    function getProjects() {
-      if (!loaded) {
-        dispatch(requestProjects(8));
-      }
+    if (!loaded) {
+      dispatch(requestProjects(8));
     }
-    getProjects();
   }, [dispatch, loaded]);
 
   return (

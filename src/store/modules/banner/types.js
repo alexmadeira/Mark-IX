@@ -4,6 +4,7 @@ export default {
   pauseTimer: '@banner/PAUSE_TIMER',
   restartTimer: '@banner/RESTART_TIMER',
   openProject: '@banner/OPEN_PROJECT',
+  closeProject: '@banner/CLOSE_PROJECT',
   requestProjects: '@banner/REQUEST_PROJECTS',
   successRequestProjects: '@banner/SUCCESS_REQUEST_PROJECTS',
 };

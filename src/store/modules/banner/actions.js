@@ -41,3 +41,8 @@ export function openProject() {
     type: types.openProject,
   };
 }
+export function closeProject() {
+  return {
+    type: types.closeProject,
+  };
+}

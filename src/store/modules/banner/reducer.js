@@ -41,6 +41,11 @@ export default function banner(state = INITIAL_STATE, action) {
         draft.pause = true;
         break;
       }
+      case types.closeProject: {
+        draft.open = false;
+        draft.pause = false;
+        break;
+      }
 
       default:
     }
