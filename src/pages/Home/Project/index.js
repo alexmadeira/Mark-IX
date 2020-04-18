@@ -7,6 +7,7 @@ import {
   restartTimer,
   openProject,
 } from '~/store/modules/banner/actions';
+import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 
 import { Container, ProjectContainer } from './styles';
 
@@ -29,6 +30,7 @@ export default function Project() {
         dispatch(restartTimer());
       }}
       onClick={() => {
+        dispatch(startContinuousLoadBar());
         dispatch(openProject());
         setTimeout(() => {
           history.push(`/projeto/${slug}`);

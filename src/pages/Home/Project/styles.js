@@ -28,7 +28,6 @@ export const Container = styled.div`
   transition: all ${openDelay}ms ease;
   &.open {
     left: 0%;
-    overflow: auto;
     height: initial;
     ${ProjectContainer} {
       opacity: 1;

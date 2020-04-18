@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Home from '~/pages/Home';
-import Projects from '~/pages/Projects';
+import Project from '~/pages/Project';
 import Sobre from '~/pages/Sobre';
 
 export default function Routes() {
@@ -15,7 +15,7 @@ export default function Routes() {
             <Switch location={location}>
               <Route path="/" exact component={Home} />
               <Route path="/sobre" component={Sobre} />
-              <Route path="/projeto/:slug" component={Projects} />
+              <Route path="/projeto/:slug" component={Project} />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
