@@ -21,3 +21,8 @@ export function closeProjects() {
     type: types.closeProjects,
   };
 }
+export function closeAll() {
+  return {
+    type: types.closeAll,
+  };
+}

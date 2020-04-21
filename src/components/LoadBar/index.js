@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoadingBar from 'react-top-loading-bar';
 
 import { finishedLoadBar } from '~/store/modules/loadBar/actions';
+import { closeAll } from '~/store/modules/menu/actions';
 import { Colors } from '~/styles/Metrics';
 
 import { Container } from './styles';
@@ -27,8 +28,9 @@ export default function LoadBar() {
   }, []);
 
   const complete = useCallback(() => {
+    dispatch(closeAll());
     loadBarRef.current.complete();
-  }, []);
+  }, [dispatch]);
 
   const addProgress = useCallback(() => {
     loadBarRef.current.add(loadBarProgress);

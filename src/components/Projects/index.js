@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import logo1 from '~/assets/temp/logo1.png';
-import logo2 from '~/assets/temp/logo2.png';
-import logo3 from '~/assets/temp/logo3.png';
 import { openProjects, closeProjects } from '~/store/modules/menu/actions';
+import { requestProjects } from '~/store/modules/projects/actions';
 
 import {
   Container,
@@ -20,6 +18,8 @@ import {
 export default function Projects() {
   const dispatch = useDispatch();
   const open = useSelector(state => state.menu.projectsOpen);
+  const { projects } = useSelector(state => state.projects);
+
   const toggleProjects = () => {
     if (open) {
       dispatch(closeProjects());
@@ -28,6 +28,9 @@ export default function Projects() {
     }
   };
 
+  useEffect(() => {
+    dispatch(requestProjects());
+  }, [dispatch]);
   return (
     <Container>
       <SquaresMenu className={open && 'open'} onClick={toggleProjects}>
@@ -36,186 +39,13 @@ export default function Projects() {
         <SquaresBottom />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo1} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo2} alt="" />
-          </Link>
-        </Project>
-        <Project>
-          <Link to="/projeto/nome-do-projeto">
-            <img src={logo3} alt="" />
-          </Link>
-        </Project>
+        {projects.map(({ id, title, slug, logo }) => (
+          <Project key={id}>
+            <Link to={`/projeto/${slug}`}>
+              <img src={logo} alt={title} />
+            </Link>
+          </Project>
+        ))}
       </ProjectsList>
     </Container>
   );

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// import Logo from '~/assets/emojis/01.png';
 import code from '~/assets/temp/code.jpg';
 import Menu from '~/components/Menu';
 import Projects from '~/components/Projects';
+import { completeLoadBar } from '~/store/modules/loadBar/actions';
 
 import {
   Container,
@@ -25,6 +26,10 @@ import {
 } from './styles';
 
 export default function Sobre() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(completeLoadBar());
+  }, [dispatch]);
   return (
     <Container>
       <Menu />

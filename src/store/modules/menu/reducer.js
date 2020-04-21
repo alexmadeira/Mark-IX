@@ -28,6 +28,11 @@ export default function banner(state = INITIAL_STATE, action) {
         draft.projectsOpen = false;
         break;
       }
+      case types.closeAll: {
+        draft.projectsOpen = false;
+        draft.menuOpen = false;
+        break;
+      }
       default:
     }
   });

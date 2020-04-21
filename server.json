@@ -7,7 +7,8 @@
       "type": "E-commerce",
       "description": "Mizuno BR DESCRIÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris.",
       "coteudo": "Mizuno br",
-      "banner": "https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+      "banner": "https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80",
+      "logo": "https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "slug": "smiles",
       "description": "SMILES DESCIRÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris.",
       "coteudo": "Smiles",
-      "banner": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1308&q=80"
+      "banner": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1308&q=80",
+      "logo": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1308&q=80"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "slug": "artwalk",
       "description": "ARTWALK DESCRIÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris.",
       "coteudo": "ArtWalk",
-      "banner": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      "banner": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "logo": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "slug": "ilovee",
       "description": "ILOVE DESCRIÇÃO Sed tempus ipsum in ante dignissim sollicitudin. Etiam in enim rutrum, blandit nibh vel, vehicula ex. Vivamus odio massa, condimentum vel enim ac, rhoncus lacinia libero. Nu llam pellentesque et urna sit amet hendrerit. Curabitur vel interdum orci. Donec vel blandit est, dictum ultrices mauris.",
       "coteudo": "Ilovee",
-      "banner": "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      "banner": "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "logo": "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     }
   ]
 }
