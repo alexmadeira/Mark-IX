@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Banner from '~/components/Banner';
-import Menu from '~/components/Menu';
-import Projects from '~/components/Projects';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 
-import Project from './Project';
+import ProjectPreview from './ProjectPreview';
 import { Container } from './styles';
 
 export default function Home() {
@@ -18,10 +16,8 @@ export default function Home() {
 
   return (
     <Container>
-      <Menu />
-      <Projects />
       <Banner />
-      <Project />
+      <ProjectPreview />
     </Container>
   );
 }

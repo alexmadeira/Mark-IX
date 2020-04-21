@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import code from '~/assets/temp/code.jpg';
-import Menu from '~/components/Menu';
-import Projects from '~/components/Projects';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 
 import {
@@ -32,8 +30,6 @@ export default function Sobre() {
   }, [dispatch]);
   return (
     <Container>
-      <Menu />
-      <Projects />
       <Header>
         <Link to="/">{/* <img src={Logo} alt="" /> */}</Link>
       </Header>

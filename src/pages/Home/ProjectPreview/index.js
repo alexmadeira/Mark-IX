@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Project from '~/pages/Project';
 import history from '~/services/history';
 import {
   pauseTimer,
@@ -11,15 +12,20 @@ import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 
 import { Container, ProjectContainer } from './styles';
 
-export default function Project() {
+export default function ProjectPreview() {
   const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
   const dispatch = useDispatch();
-  const { title, banner, slug } = useSelector(
+  const activeProject = useSelector(
     state => state.banner.projects[state.banner.active]
   );
+  const loaded = useSelector(state => state.banner.loaded);
 
   const { open } = useSelector(state => state.banner);
-
+  const projectData = {
+    params: {
+      slug: loaded ? activeProject.slug : '',
+    },
+  };
   return (
     <Container
       className={open && 'open'}
@@ -33,17 +39,12 @@ export default function Project() {
         dispatch(startContinuousLoadBar());
         dispatch(openProject());
         setTimeout(() => {
-          history.push(`/projeto/${slug}`);
+          history.push(`/projeto/${activeProject.slug}`);
         }, openDelay);
       }}
     >
       <ProjectContainer>
-        <h1>{title}</h1>
-        <img src={banner} alt="" />
-        <img src={banner} alt="" />
-        <img src={banner} alt="" />
-        <img src={banner} alt="" />
-        <img src={banner} alt="" />
+        <Project match={projectData} />
       </ProjectContainer>
     </Container>
   );

@@ -6,8 +6,7 @@ import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
 import { Container } from './styles';
 
 function Timer() {
-  const delay = 10000;
-  // process.env.REACT_APP_BANNER_TIMER;
+  const delay = process.env.REACT_APP_BANNER_TIMER;
   const timeOutDelay = delay / 100;
 
   const dispatch = useDispatch();

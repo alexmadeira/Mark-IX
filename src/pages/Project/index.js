@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 
-import Menu from '~/components/Menu';
-import Projects from '~/components/Projects';
 import api from '~/services/api';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 
@@ -13,12 +11,14 @@ import { Container } from './styles';
 function Project({ match: { params } }) {
   const { slug } = params;
   const dispatch = useDispatch();
-  const [project, setProject] = useState({});
+  const [project, setProject] = useState(false);
 
   useEffect(() => {
     async function getProject() {
-      const response = await api.get(`/projects?slug=${slug}`);
-      setProject(response.data[0]);
+      if (slug) {
+        const response = await api.get(`/projects?slug=${slug}`);
+        setProject(response.data[0]);
+      }
     }
     getProject();
   }, [setProject, slug]);
@@ -29,14 +29,16 @@ function Project({ match: { params } }) {
 
   return (
     <Container>
-      <Menu />
-      <Projects />
-      <h1>{project.title}</h1>
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
+      {project && (
+        <>
+          <h1>{project.title}</h1>
+          <img src={project.banner} alt="" />
+          <img src={project.banner} alt="" />
+          <img src={project.banner} alt="" />
+          <img src={project.banner} alt="" />
+          <img src={project.banner} alt="" />
+        </>
+      )}
     </Container>
   );
 }

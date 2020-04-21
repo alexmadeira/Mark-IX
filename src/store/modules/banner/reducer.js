@@ -3,7 +3,7 @@ import produce from 'immer';
 import types from './types';
 
 const INITIAL_STATE = {
-  projects: [{ id: null, title: null, type: null, description: null }],
+  projects: [],
   active: 0,
   loaded: false,
   restart: true,

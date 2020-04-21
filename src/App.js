@@ -5,6 +5,8 @@ import { Router } from 'react-router-dom';
 import '~/config/ReactotronConfig';
 
 import LoadBar from '~/components/LoadBar';
+import Menu from '~/components/Menu';
+import Projects from '~/components/Projects';
 import Routes from '~/routes';
 import history from '~/services/history';
 import GlobalStyle from '~/styles/global';
@@ -16,6 +18,8 @@ function App() {
     <Provider store={store}>
       <LoadBar />
       <Router history={history}>
+        <Projects />
+        <Menu />
         <GlobalStyle />
         <Routes />
       </Router>

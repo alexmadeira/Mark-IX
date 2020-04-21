@@ -5,17 +5,18 @@ import { Container, Title, Paragraph } from './styles';
 import Timer from './Timer';
 
 export default function Project() {
-  const { title, type, description } = useSelector(
+  const activeBanner = useSelector(
     state => state.banner.projects[state.banner.active]
   );
+  const loaded = useSelector(state => state.banner.loaded);
 
   return (
     <Container>
       <Title>
-        {title} {type}
+        {loaded && activeBanner.title} {loaded && activeBanner.type}
       </Title>
       <Timer start={0} />
-      <Paragraph>{description}</Paragraph>
+      <Paragraph>{loaded && activeBanner.description}</Paragraph>
     </Container>
   );
 }
