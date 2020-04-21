@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import code from '~/assets/temp/code.jpg';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
+import { setCurrent } from '~/store/modules/page/actions';
 
 import {
   Container,
@@ -25,9 +26,15 @@ import {
 
 export default function Sobre() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(completeLoadBar());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setCurrent('Sobre'));
+  }, [dispatch]);
+
   return (
     <Container>
       <Header>

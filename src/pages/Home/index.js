@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Banner from '~/components/Banner';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
+import { setCurrent } from '~/store/modules/page/actions';
 
 import ProjectPreview from './ProjectPreview';
 import { Container } from './styles';
@@ -12,6 +13,10 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(completeLoadBar());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setCurrent('Home'));
   }, [dispatch]);
 
   return (

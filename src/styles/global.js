@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 import { Fonts } from './Metrics';
 
+const transitionDelay = process.env.REACT_APP_PAGE_TRANSITION_DELAY;
+
 export default createGlobalStyle`
 * {
   margin: 0;
@@ -48,14 +50,14 @@ body {
   left:0;
   top:0;
   opacity:0;
-  transition:all 350ms linear
+  transition:all ${transitionDelay / 2}ms linear
 }
 .page-exit {
   position:absolute;
   left:0;
   top:0;
   opacity:1;
-  transition:all 350ms linear
+transition:all ${transitionDelay / 2}ms linear
 }
 .page-enter-active {
   opacity: 1;

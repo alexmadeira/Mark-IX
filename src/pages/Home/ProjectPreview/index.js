@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Project from '~/pages/Project';
@@ -7,6 +7,7 @@ import {
   pauseTimer,
   restartTimer,
   openProject,
+  closeProject,
 } from '~/store/modules/banner/actions';
 import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 
@@ -19,13 +20,23 @@ export default function ProjectPreview() {
     state => state.banner.projects[state.banner.active]
   );
   const loaded = useSelector(state => state.banner.loaded);
-
+  const currentPage = useSelector(state => state.page.current);
   const { open } = useSelector(state => state.banner);
+
   const projectData = {
     params: {
       slug: loaded ? activeProject.slug : '',
     },
   };
+
+  useEffect(() => {
+    if (currentPage === 'Home') {
+      setTimeout(() => {
+        dispatch(closeProject());
+      }, 700);
+    }
+  }, [currentPage, dispatch, openDelay]);
+
   return (
     <Container
       className={open && 'open'}
