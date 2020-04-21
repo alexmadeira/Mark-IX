@@ -52,7 +52,7 @@ export const SquaresMenu = styled.span`
   margin-top: calc((${Spaces.BasePadding} * 3) + 10px);
   width: 40px;
   height: 40px;
-  z-index: 25;
+  z-index: 21;
   cursor: pointer;
   flex-direction: column;
   display: flex;

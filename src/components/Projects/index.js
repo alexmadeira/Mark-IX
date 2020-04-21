@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import logo1 from '~/assets/temp/logo1.png';
 import logo2 from '~/assets/temp/logo2.png';
 import logo3 from '~/assets/temp/logo3.png';
+import { openProjects, closeProjects } from '~/store/modules/menu/actions';
 
 import {
   Container,
@@ -16,15 +18,19 @@ import {
 } from './styles';
 
 export default function Projects() {
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const open = useSelector(state => state.menu.projectsOpen);
+  const toggleProjects = () => {
+    if (open) {
+      dispatch(closeProjects());
+    } else {
+      dispatch(openProjects());
+    }
+  };
+
   return (
     <Container>
-      <SquaresMenu
-        className={open && 'open'}
-        onClick={() => {
-          setOpen(!open);
-        }}
-      >
+      <SquaresMenu className={open && 'open'} onClick={toggleProjects}>
         <SquaresTop />
         <SquaresMiddle />
         <SquaresBottom />

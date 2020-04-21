@@ -12,7 +12,7 @@ export const Hamburguer = styled.span`
   margin-top: calc((${Spaces.BasePadding} * 3) + 10px);
   width: 40px;
   height: 40px;
-  z-index: 25;
+  z-index: 26;
   cursor: pointer;
   &::before {
     content: '';
@@ -74,7 +74,7 @@ export const MenuContainer = styled.ul`
   opacity: 0;
   visibility: hidden;
   background: ${Colors.Base};
-  z-index: 21;
+  z-index: 25;
   transition: all 0.5s ease;
   transform: translate(-50%, -50%);
   display: flex;
