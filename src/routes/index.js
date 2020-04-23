@@ -7,7 +7,10 @@ import Project from '~/pages/Project';
 import Sobre from '~/pages/Sobre';
 
 export default function Routes() {
-  const transitionDelay = process.env.REACT_APP_PAGE_TRANSITION_DELAY;
+  const transitionDelay = parseInt(
+    process.env.REACT_APP_PAGE_TRANSITION_DELAY,
+    10
+  );
 
   return (
     <Route
@@ -15,6 +18,7 @@ export default function Routes() {
         <TransitionGroup>
           <CSSTransition
             key={location.key}
+            ti
             timeout={transitionDelay}
             classNames="page"
           >
