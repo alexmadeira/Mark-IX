@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
+import { FaInstagram, FaLinkedinIn, FaCodeBranch } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { requestProjects } from '~/store/modules/banner/actions';
@@ -18,13 +18,14 @@ import {
 
 export default function Banner() {
   const dispatch = useDispatch();
+  const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
   const { loaded, open } = useSelector(state => state.banner);
 
   useEffect(() => {
     if (!loaded) {
-      dispatch(requestProjects(8));
+      dispatch(requestProjects(numberBanners));
     }
-  }, [dispatch, loaded]);
+  }, [dispatch, loaded, numberBanners]);
 
   return (
     <Container className={open && 'open'}>
@@ -58,11 +59,11 @@ export default function Banner() {
         </SocialItem>
         <SocialItem>
           <a
-            href="https://bitbucket.org/alexmadeira5/"
+            href="https://github.com/alexmadeira"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaBitbucket />
+            <FaCodeBranch />
           </a>
         </SocialItem>
       </Social>
