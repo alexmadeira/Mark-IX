@@ -26,11 +26,11 @@ export const Container = styled.div`
       calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 3);
     max-width: initial;
     width: 100vw;
-    height: auto;
+    height: 50vh;
     top: 0;
     &.open {
       left: 0;
-      top: -100vh;
+      top: -50vh;
     }
   }
   @media (max-width: 780px) and (orientation: landscape) {

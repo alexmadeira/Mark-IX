@@ -22,19 +22,23 @@ export const Container = styled.div`
   position: absolute;
   left: 50%;
   top: 0;
-  height: 100vh;
   overflow: hidden;
   z-index: 2;
   transition: all ${openDelay}ms ease;
   &.open {
     left: 0%;
-    height: initial;
     ${ProjectContainer} {
       opacity: 1;
     }
   }
   @media (max-width: 780px) {
-    position: initial;
+    position: relative;
+    left: 0%;
+    height: 50vh;
+    &.open {
+      top: -50vh;
+      height: 100vh;
+    }
   }
   cursor: pointer;
 `;
