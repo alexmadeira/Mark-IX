@@ -42,7 +42,7 @@ export default function Projects() {
         {projects.map(({ _id, title, slug, logo }) => (
           <Project key={_id}>
             <Link to={`/projeto/${slug}`}>
-              <img src={logo} alt={title} />
+              <img src={logo.file} alt={title} />
             </Link>
           </Project>
         ))}

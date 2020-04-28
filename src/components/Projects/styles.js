@@ -145,7 +145,7 @@ export const ProjectsList = styled.ul`
   transform-origin: center;
   display: grid;
   grid-gap: calc(${Spaces.BaseMargin}*2);
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   li {
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -166,7 +166,18 @@ export const ProjectsList = styled.ul`
 `;
 export const Project = styled.li`
   list-style: none;
-  img {
-    max-width: 100%;
+  a {
+    img {
+      max-width: 100%;
+      filter: grayscale(1);
+      transition: all 250ms ease;
+      transform: scale(0.95);
+    }
+    &:hover {
+      img {
+        filter: grayscale(0);
+        transform: scale(1);
+      }
+    }
   }
 `;
