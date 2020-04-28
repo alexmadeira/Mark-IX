@@ -20,7 +20,7 @@ function HomeBack({ projectId }) {
   const bannerProjects = useSelector(state => state.banner.projects);
 
   const inBanner = bannerProjects.find(
-    bannerProject => bannerProject.id === projectId
+    bannerProject => bannerProject._id === projectId
   );
 
   const activeKey = bannerProjects.indexOf(inBanner);

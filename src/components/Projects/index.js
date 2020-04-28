@@ -39,8 +39,8 @@ export default function Projects() {
         <SquaresBottom />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
-        {projects.map(({ id, title, slug, logo }) => (
-          <Project key={id}>
+        {projects.map(({ _id, title, slug, logo }) => (
+          <Project key={_id}>
             <Link to={`/projeto/${slug}`}>
               <img src={logo} alt={title} />
             </Link>

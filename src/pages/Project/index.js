@@ -20,8 +20,8 @@ function Project({ match: { params } }) {
   useEffect(() => {
     async function getProject() {
       if (slug) {
-        const response = await api.get(`/projects?slug=${slug}`);
-        setProject(response.data[0]);
+        const response = await api.get(`/project/${slug}`);
+        setProject(response.data);
       }
     }
     getProject();
@@ -37,13 +37,16 @@ function Project({ match: { params } }) {
 
   return (
     <Container>
-      {currentPage !== 'Home' && <HomeBack projectId={project.id} />}
+      {currentPage !== 'Home' && <HomeBack projectId={project._id} />}
+      <img
+        src="https://alexmadeira.sirv.com/mark-viii/imagens/game7/alex-madeira-game7-background.jpg"
+        alt=""
+      />
       <h1>{project.title}</h1>
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
-      <img src={project.banner} alt="" />
+      <img
+        src="https://alexmadeira.sirv.com/mark-viii/imagens/game7/alex-madeira-game7-destaque-centro.jpg"
+        alt=""
+      />
     </Container>
   );
 }
