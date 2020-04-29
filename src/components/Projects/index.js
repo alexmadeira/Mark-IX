@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { openProjects, closeProjects } from '~/store/modules/menu/actions';
 import { requestProjects } from '~/store/modules/projects/actions';
@@ -13,10 +12,13 @@ import {
   SquaresBottom,
   ProjectsList,
   Project,
+  Link,
+  Preview,
 } from './styles';
 
 export default function Projects() {
   const dispatch = useDispatch();
+  const videoRef = useRef(null);
   const open = useSelector(state => state.menu.projectsOpen);
   const { projects } = useSelector(state => state.projects);
 
@@ -38,13 +40,26 @@ export default function Projects() {
         <SquaresMiddle />
         <SquaresBottom />
       </SquaresMenu>
-      <ProjectsList className={open && 'open'}>
-        {projects.map(({ _id, title, slug, logo }) => (
-          <Project key={_id}>
-            <Link to={`/projeto/${slug}`}>
-              <img src={logo.file} alt={title} />
-            </Link>
-          </Project>
+      <ProjectsList className={!open && 'open'}>
+        {projects.map(({ _id, title, slug, logo, preview }) => (
+          <>
+            <Project key={_id}>
+              <Link
+                to={`/projeto/${slug}`}
+                onMouseEnter={() => {
+                  videoRef.current.play();
+                }}
+                onMouseLeave={() => {
+                  videoRef.current.pause();
+                }}
+              >
+                <Preview loop autoPlay={false} preload="auto" ref={videoRef}>
+                  <source src={preview} />
+                </Preview>
+                <img src={logo.file} alt={title} />
+              </Link>
+            </Project>
+          </>
         ))}
       </ProjectsList>
     </Container>

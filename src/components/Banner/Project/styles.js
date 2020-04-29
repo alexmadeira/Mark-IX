@@ -14,6 +14,25 @@ export const Title = styled.h3`
   line-height: calc(${Fonts.Sizes.Banner.title} + 10px);
 `;
 
+export const Type = styled.small`
+  font-weight: normal;
+  font-size: ${Fonts.Sizes.Banner.type};
+  line-height: calc(${Fonts.Sizes.Banner.type} + 10px);
+  margin-left: calc(${Spaces.BaseMargin}*2);
+  padding-left: calc(${Spaces.BaseMargin}*2);
+  position: relative;
+  &::after {
+    content: '';
+    background: #ffffff;
+    height: 5px;
+    width: 20px;
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;
+
 export const Paragraph = styled.p`
   margin-top: calc(${Spaces.BaseMargin}*4);
   font-weight: normal;

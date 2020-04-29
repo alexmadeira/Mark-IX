@@ -6,6 +6,7 @@ const Fonts = {
       spotlight: '14rem',
       highlighted: '5.7rem',
       title: '4.5rem',
+      type: '3rem',
       paragraph: '1.6rem',
       actualStep: '3rem',
       step: '2rem',
