@@ -146,7 +146,7 @@ export const ProjectsList = styled.ul`
   display: grid;
   grid-gap: calc(${Spaces.BaseMargin}*2);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, 250px);
+  grid-template-rows: repeat(auto-fit, 200px);
 
   li {
     opacity: 0;

@@ -12,7 +12,7 @@ export const Preview = styled.video`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 1;
+  opacity: 0;
   transition: all 250ms ease;
 `;
 
@@ -23,6 +23,7 @@ export const Logo = styled.img`
   transform: translate(-50%, -50%);
   opacity: 1;
   transition: all 250ms ease;
+  width: 80%;
 `;
 
 export const Link = styled(RouterLink)`
