@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Link as RouterLink } from 'react-router-dom';
-
 import { saturate, tint } from 'polished';
 
 import { Colors, Spaces } from '~/styles/Metrics';
@@ -165,47 +163,6 @@ export const ProjectsList = styled.ul`
     li {
       opacity: 1;
       transition-delay: 0.5s;
-    }
-  }
-`;
-export const Project = styled.li`
-  list-style: none;
-`;
-
-export const Preview = styled.video`
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: all 250ms ease;
-`;
-
-export const Link = styled(RouterLink)`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  filter: grayscale(1);
-  transition: all 250ms ease;
-  transform: scale(0.9);
-  overflow: hidden;
-  img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 1;
-    transition: all 250ms ease;
-  }
-  &:hover {
-    filter: grayscale(0);
-    transform: scale(1.1);
-    ${Preview} {
-      opacity: 1;
-    }
-    img {
-      opacity: 0;
     }
   }
 `;
