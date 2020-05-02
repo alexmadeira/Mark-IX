@@ -1,7 +1,9 @@
 import React, { useState, memo, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
+
+import useBanner from '~/hooks/useBanner';
 
 import { Container } from './styles';
 
@@ -10,9 +12,7 @@ function Timer() {
   const timeOutDelay = delay / 100;
 
   const dispatch = useDispatch();
-  const { active, projects, restart, pause } = useSelector(
-    state => state.banner
-  );
+  const { active, projects, restart, pause } = useBanner();
 
   const [timeOut, setTimeOut] = useState(null);
   const [timerPercent, setTimerPercent] = useState(0);

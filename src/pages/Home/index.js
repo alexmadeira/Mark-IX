@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Banner from '~/components/Banner';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { setCurrent } from '~/store/modules/page/actions';
+
+import Banner from '~/components/Banner';
 
 import ProjectPreview from './ProjectPreview';
 import { Container } from './styles';

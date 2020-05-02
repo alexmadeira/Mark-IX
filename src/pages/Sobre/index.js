@@ -3,9 +3,10 @@ import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import code from '~/assets/temp/code.jpg';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { setCurrent } from '~/store/modules/page/actions';
+
+import code from '~/assets/temp/code.jpg';
 
 import {
   Container,

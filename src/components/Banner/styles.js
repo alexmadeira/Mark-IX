@@ -6,7 +6,7 @@ import RandonEmoji from '~/components/Emoji';
 import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
 export const Container = styled.div`
-  width: 50%;
+  width: 40%;
   left: 0%;
   background: ${saturate(0.2, tint(0.5, Colors.Base))};
   padding: calc(${Spaces.BasePadding} * 3);
@@ -20,6 +20,9 @@ export const Container = styled.div`
   position: relative;
   &.open {
     left: -100vw;
+  }
+  @media (max-width: 1560px) {
+    width: 50%;
   }
   @media (max-width: 780px) {
     padding: calc(${Spaces.BasePadding} * 3) calc(${Spaces.BasePadding} * 7)

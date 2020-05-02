@@ -8,7 +8,7 @@ import types from './types';
 export function* getProjects({ payload }) {
   const { limit } = payload;
   try {
-    const response = yield call(api.get, `/projects?_limit=${limit}`);
+    const response = yield call(api.get, `/projects?limit=${limit}`);
     yield put(successRequestProjects(response.data));
   } catch (err) {
     console.tron.log(err);

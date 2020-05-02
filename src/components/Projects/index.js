@@ -38,7 +38,7 @@ export default function Projects() {
         <SquaresMiddle />
         <SquaresBottom />
       </SquaresMenu>
-      <ProjectsList className={!open && 'open'}>
+      <ProjectsList className={open && 'open'}>
         {projects.map(({ _id, title, slug, logo, preview }) => (
           <Project
             key={_id}

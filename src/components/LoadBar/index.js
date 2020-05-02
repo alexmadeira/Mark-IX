@@ -4,6 +4,7 @@ import LoadingBar from 'react-top-loading-bar';
 
 import { finishedLoadBar } from '~/store/modules/loadBar/actions';
 import { closeAll } from '~/store/modules/menu/actions';
+
 import { Colors } from '~/styles/Metrics';
 
 import { Container } from './styles';

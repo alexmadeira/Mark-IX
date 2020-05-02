@@ -11,12 +11,12 @@ export default function Project() {
   const loaded = useSelector(state => state.banner.loaded);
 
   return (
-    <Container>
+    <Container className={loaded && 'loaded'}>
       <Title>
         {loaded && activeBanner.title}
         <Type> {loaded && activeBanner.type}</Type>
       </Title>
-      <Timer start={0} />
+      {loaded && <Timer start={0} />}
       <Paragraph>{loaded && activeBanner.description}</Paragraph>
     </Container>
   );

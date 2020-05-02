@@ -20,7 +20,7 @@ export const ProjectContainer = styled.div`
 export const Container = styled.div`
   width: 100vw;
   position: absolute;
-  left: 50%;
+  left: 40%;
   top: 0;
   overflow: hidden;
   z-index: 2;
@@ -30,6 +30,10 @@ export const Container = styled.div`
     ${ProjectContainer} {
       opacity: 1;
     }
+  }
+
+  @media (max-width: 1560px) {
+    left: 50%;
   }
   @media (max-width: 780px) {
     position: relative;

@@ -6,17 +6,23 @@ const INITIAL_STATE = {
   projects: [],
   active: 0,
   loaded: false,
+  loading: false,
   restart: true,
-  pause: false,
+  pause: true,
   open: false,
 };
 
 export default function banner(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
+      case types.requestProjects: {
+        draft.loading = true;
+        break;
+      }
       case types.successRequestProjects: {
-        draft.loaded = true;
         draft.projects = action.payload.projects;
+        draft.loaded = true;
+        draft.loading = false;
         break;
       }
       case types.changeActiveProject: {

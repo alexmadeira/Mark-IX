@@ -53,6 +53,7 @@ module.exports = {
           '/^styled/',
           '/^react/',
           'module',
+          '/^~/store/',
           '/^~/',
           ['parent', 'sibling', 'index'],
         ],

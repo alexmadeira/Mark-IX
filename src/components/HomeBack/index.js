@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import PropTypes from 'prop-types';
-
-import history from '~/services/history';
 import {
   setActiveProject,
   startTimer,
@@ -11,33 +8,33 @@ import {
   openProject,
 } from '~/store/modules/banner/actions';
 
+import useBanner from '~/hooks/useBanner';
+import history from '~/services/history';
+
 import { Container } from './styles';
 
-function HomeBack({ projectId }) {
+function HomeBack() {
   const dispatch = useDispatch();
+  const { bannerPosition } = useBanner();
+
   const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
 
   const bannerProjects = useSelector(state => state.banner.projects);
 
-  const inBanner = bannerProjects.find(
-    bannerProject => bannerProject._id === projectId
-  );
-
-  const activeKey = bannerProjects.indexOf(inBanner);
-
   function backHome() {
-    dispatch(setActiveProject(activeKey));
+    dispatch(setActiveProject(bannerPosition));
     dispatch(startTimer(true));
     dispatch(openProject());
     history.push('/');
   }
+
   useEffect(() => {
     if (!bannerProjects.length) {
       dispatch(requestProjects(numberBanners));
     }
   }, [bannerProjects, dispatch, numberBanners]);
 
-  return projectId !== false ? (
+  return (
     <Container
       type="button"
       onClick={() => {
@@ -46,18 +43,7 @@ function HomeBack({ projectId }) {
     >
       Home
     </Container>
-  ) : null;
+  );
 }
 
-HomeBack.defaultProps = {
-  projectId: false,
-};
-
-HomeBack.propTypes = {
-  projectId: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-};
 export default HomeBack;

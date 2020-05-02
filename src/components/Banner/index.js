@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaInstagram, FaLinkedinIn, FaCodeBranch } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { requestProjects } from '~/store/modules/banner/actions';
+import useBanner from '~/hooks/useBanner';
 
 import Nav from './Nav';
 import Project from './Project';
@@ -17,15 +16,7 @@ import {
 } from './styles';
 
 export default function Banner() {
-  const dispatch = useDispatch();
-  const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
-  const { loaded, open } = useSelector(state => state.banner);
-
-  useEffect(() => {
-    if (!loaded) {
-      dispatch(requestProjects(numberBanners));
-    }
-  }, [dispatch, loaded, numberBanners]);
+  const { open } = useBanner();
 
   return (
     <Container className={open && 'open'}>

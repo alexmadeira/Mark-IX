@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Project from '~/pages/Project';
-import history from '~/services/history';
 import {
   pauseTimer,
   restartTimer,
@@ -11,17 +9,19 @@ import {
 } from '~/store/modules/banner/actions';
 import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 
+import useBanner from '~/hooks/useBanner';
+import Project from '~/pages/Project';
+import history from '~/services/history';
+
 import { Container, ProjectContainer } from './styles';
 
+const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
+
 export default function ProjectPreview() {
-  const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
   const dispatch = useDispatch();
-  const activeProject = useSelector(
-    state => state.banner.projects[state.banner.active]
-  );
-  const loaded = useSelector(state => state.banner.loaded);
+
   const currentPage = useSelector(state => state.page.current);
-  const { open } = useSelector(state => state.banner);
+  const { open, loaded, activeProject } = useBanner();
 
   const projectData = {
     params: {
@@ -35,7 +35,7 @@ export default function ProjectPreview() {
         dispatch(closeProject());
       }, 700);
     }
-  }, [currentPage, dispatch, openDelay]);
+  }, [currentPage, dispatch]);
 
   return (
     <Container
@@ -55,7 +55,7 @@ export default function ProjectPreview() {
       }}
     >
       <ProjectContainer>
-        <Project match={projectData} />
+        {loaded ? <Project match={projectData} /> : 'carregando'}
       </ProjectContainer>
     </Container>
   );
