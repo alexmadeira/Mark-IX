@@ -5,7 +5,6 @@ import { Colors } from '~/styles/Metrics';
 import Spaces from '~/styles/Metrics/spaces';
 
 export const Container = styled.div`
-  height: 200vh;
   background: #fff;
 `;
 
@@ -25,6 +24,7 @@ export const Banner = styled.div`
   justify-content:center;
   align-items:center;
   display:flex;
+  margin-bottom: calc(${Spaces.BaseMargin}*10);
   &::after{
     content: '';
     position: absolute;
@@ -35,6 +35,9 @@ export const Banner = styled.div`
     background: rgba(0,0,0,.6);
     z-index: 2;
   }
+  @media (max-width: 780px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const Name = styled.h1`
@@ -42,10 +45,10 @@ export const Name = styled.h1`
   z-index: 5;
   font-size: 8.5rem;
   line-height: calc(8.5rem + 10px);
-  opacity: 0;
+  opacity: 1;
   transition: 500ms;
-  &.show {
-    opacity: 1;
+  &.hidden {
+    opacity: 0;
   }
 `;
 
@@ -53,5 +56,60 @@ export const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   max-width: 1600px;
-  margin: 0 auto;
+  margin: calc(${Spaces.BaseMargin}*10) auto 0 auto;
+  @media (max-width: 780px) {
+    margin: calc(${Spaces.BaseMargin}*3) auto;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const HeaderTitle = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(${Spaces.BasePadding}*3);
+  font-size: 5rem;
+  line-height: calc(5rem + 10px);
+  @media (max-width: 780px) {
+    padding: calc(${Spaces.BasePadding});
+  }
+`;
+
+export const HeaderDescription = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(${Spaces.BasePadding}*3);
+  font-size: 2rem;
+  line-height: calc(2rem + 10px);
+  @media (max-width: 880px) {
+    font-size: 2.5rem;
+    line-height: calc(2.5rem + 10px);
+  }
+`;
+
+export const MobileList = styled.ul`
+  display: flex;
+  max-width: 1600px;
+  margin: calc(${Spaces.BaseMargin}*5) auto 0 auto;
+  padding: calc(${Spaces.BasePadding}*5);
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: scroll;
+  @media (max-width: 1400) {
+    justify-content: center;
+    overflow: initial;
+  }
+  li {
+    list-style: none;
+    margin: 0 calc(${Spaces.BaseMargin}*3);
+  }
+`;
+
+export const PreviewMovie = styled.div`
+  background: #069;
+  width: 100%;
+  height: 80vh;
 `;

@@ -12,7 +12,6 @@ export const Container = styled.button`
   opacity: 1;
   transition: all 1000ms ease;
   cursor: pointer;
-
   &.hidden {
     opacity: 0;
   }

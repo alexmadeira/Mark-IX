@@ -6,15 +6,28 @@ import PropTypes from 'prop-types';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { requestProject } from '~/store/modules/projects/actions';
 
+import cell from '~/assets/temp/01.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
+import { usePage } from '~/hooks/Page';
 
-import { Container, Emoji, Banner, Header, Name } from './styles';
+import {
+  Container,
+  Emoji,
+  Banner,
+  Name,
+  Header,
+  HeaderTitle,
+  HeaderDescription,
+  MobileList,
+  PreviewMovie,
+} from './styles';
 
 function Project({ match: { params } }) {
   const { slug } = params;
 
   const dispatch = useDispatch();
+  const page = usePage();
 
   const { project } = useSelector(state => state.projects);
 
@@ -36,11 +49,34 @@ function Project({ match: { params } }) {
       </HomeBack>
 
       <Banner background={background}>
-        <Name className="">{project.title}</Name>
+        <Name className={page.isHome && 'hidden'}>{project.title}</Name>
       </Banner>
       <Header>
-        <h1>{project.title}</h1>
+        <HeaderTitle>{project.title}</HeaderTitle>
+        <HeaderDescription>
+          Nunc rutrum pulvinar posuere. Cras lorem erat, pharetra eget ante a,
+          tempor viverra arcu. Phasellus mattis non nisi ut porta. Sed tempor eu
+          lectus nec euismod. Integer consectetur odio ut urna porta ultrices.
+          Morbi ac tempor risus, eu interdum est. Sed neque mi, feugiat ac odio
+          tempor, porttitor cursus odio. Integer malesuada eu massa a eleifend.
+          Curabitur tempus porttitor orci, at blandit sapien vulputate non.
+          Morbi tempor, enim et commodo dignissim, justo metus tincidunt leo, eu
+          eleifend quam orci in odio. Curabitur vel lorem semper, venenatis
+          magna sit amet, semper lacus.
+        </HeaderDescription>
       </Header>
+      <MobileList>
+        <li>
+          <img src={cell} alt="" />
+        </li>
+        <li>
+          <img src={cell} alt="" />
+        </li>
+        <li>
+          <img src={cell} alt="" />
+        </li>
+      </MobileList>
+      <PreviewMovie />
       <Footer />
     </Container>
   );
