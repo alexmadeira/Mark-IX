@@ -1,19 +1,20 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route as RouteWrapper } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import Home from '~/pages/Home';
 import Project from '~/pages/Project';
 import Sobre from '~/pages/Sobre';
 
+import Route from './Route';
+
+const transtionDelay = process.env.REACT_APP_PAGE_TRANSITION_DELAY;
+
 export default function Routes() {
-  const transitionDelay = parseInt(
-    process.env.REACT_APP_PAGE_TRANSITION_DELAY,
-    10
-  );
+  const transitionDelay = parseInt(transtionDelay, 10);
 
   return (
-    <Route
+    <RouteWrapper
       render={({ location }) => (
         <TransitionGroup>
           <CSSTransition
@@ -23,9 +24,13 @@ export default function Routes() {
             classNames="page"
           >
             <Switch location={location}>
-              <Route path="/" exact component={Home} />
-              <Route path="/sobre" component={Sobre} />
-              <Route path="/projeto/:slug" component={Project} />
+              <Route path="/" exact component={Home} location={location} />
+              <Route path="/sobre" component={Sobre} location={location} />
+              <Route
+                path="/projeto/:slug"
+                component={Project}
+                location={location}
+              />
             </Switch>
           </CSSTransition>
         </TransitionGroup>

@@ -4,20 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
-import { setCurrent } from '~/store/modules/page/actions';
 import { requestProject } from '~/store/modules/projects/actions';
 
+import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
-import useBanner from '~/hooks/useBanner';
 
-import { Container } from './styles';
+import { Container, Emoji, Banner, Header, Name } from './styles';
 
 function Project({ match: { params } }) {
   const { slug } = params;
-  const { bannerPosition } = useBanner();
 
   const dispatch = useDispatch();
-  const currentPage = useSelector(state => state.page.current);
+
   const { project } = useSelector(state => state.projects);
 
   useEffect(() => {
@@ -28,25 +26,22 @@ function Project({ match: { params } }) {
     dispatch(completeLoadBar());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(setCurrent('Projeto'));
-  }, [dispatch]);
+  const background =
+    'https://compass.jeep.com.br/img-desktop/galeria/new/galeria-desk(2).jpg';
 
   return (
     <Container>
-      {currentPage !== 'Home' && bannerPosition >= 0 && (
-        <HomeBack projectId={project._id} />
-      )}
+      <HomeBack className="logo" projectId={project._id}>
+        <Emoji />
+      </HomeBack>
 
-      <img
-        src="https://alexmadeira.sirv.com/mark-viii/imagens/game7/alex-madeira-game7-background.jpg"
-        alt=""
-      />
-      <h1>{project.title}</h1>
-      <img
-        src="https://alexmadeira.sirv.com/mark-viii/imagens/game7/alex-madeira-game7-destaque-centro.jpg"
-        alt=""
-      />
+      <Banner background={background}>
+        <Name className="">{project.title}</Name>
+      </Banner>
+      <Header>
+        <h1>{project.title}</h1>
+      </Header>
+      <Footer />
     </Container>
   );
 }

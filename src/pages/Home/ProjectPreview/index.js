@@ -9,7 +9,8 @@ import {
 } from '~/store/modules/banner/actions';
 import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 
-import useBanner from '~/hooks/useBanner';
+import { useBanner } from '~/hooks/Banner';
+import { usePage } from '~/hooks/Page';
 import Project from '~/pages/Project';
 import history from '~/services/history';
 
@@ -19,6 +20,7 @@ const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
 export default function ProjectPreview() {
   const dispatch = useDispatch();
+  const page = usePage();
 
   const currentPage = useSelector(state => state.page.current);
   const { open, loaded, activeProject } = useBanner();
@@ -30,12 +32,13 @@ export default function ProjectPreview() {
   };
 
   useEffect(() => {
-    if (currentPage === 'Home') {
+    if (page.isHome && open) {
       setTimeout(() => {
+        console.tron.log('sss');
         dispatch(closeProject());
-      }, 700);
+      }, 900);
     }
-  }, [currentPage, dispatch]);
+  }, [currentPage, dispatch, open, page]);
 
   return (
     <Container

@@ -4,7 +4,9 @@ import { saturate, tint } from 'polished';
 
 import { Colors, Spaces } from '~/styles/Metrics';
 
-export const Container = styled.nav``;
+export const Container = styled.nav`
+  position: absolute;
+`;
 
 const Squares = styled.em`
   position: relative;

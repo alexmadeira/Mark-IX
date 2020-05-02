@@ -4,16 +4,10 @@ const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
 export const ProjectContainer = styled.div`
   opacity: 0.2;
-  color: #fff;
-  height: 200vw;
+  height: 100vw;
   width: 100%;
-  h1 {
-    margin-top: 50px;
-    text-align: center;
-    width: 100%;
-  }
-  img {
-    width: 100%;
+  .logo {
+    opacity: 0;
   }
 `;
 

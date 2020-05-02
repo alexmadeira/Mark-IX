@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { setActiveProject, startTimer } from '~/store/modules/banner/actions';
 
-import useBanner from '~/hooks/useBanner';
+import { useBanner } from '~/hooks/Banner';
 
 import { Container } from './styles';
 

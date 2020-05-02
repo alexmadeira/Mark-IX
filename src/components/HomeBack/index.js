@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import {
   setActiveProject,
   startTimer,
@@ -8,23 +10,28 @@ import {
   openProject,
 } from '~/store/modules/banner/actions';
 
-import useBanner from '~/hooks/useBanner';
+import { useBanner } from '~/hooks/Banner';
+import { usePage } from '~/hooks/Page';
 import history from '~/services/history';
 
 import { Container } from './styles';
 
-function HomeBack() {
-  const dispatch = useDispatch();
-  const { bannerPosition } = useBanner();
+const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
 
-  const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
+function HomeBack({ children, className }) {
+  const dispatch = useDispatch();
+  const page = usePage();
+
+  const { bannerPosition, inBanner } = useBanner();
 
   const bannerProjects = useSelector(state => state.banner.projects);
-
   function backHome() {
-    dispatch(setActiveProject(bannerPosition));
-    dispatch(startTimer(true));
-    dispatch(openProject());
+    if (inBanner) {
+      dispatch(setActiveProject(bannerPosition));
+      dispatch(startTimer(true));
+      dispatch(openProject());
+    }
+
     history.push('/');
   }
 
@@ -32,18 +39,28 @@ function HomeBack() {
     if (!bannerProjects.length) {
       dispatch(requestProjects(numberBanners));
     }
-  }, [bannerProjects, dispatch, numberBanners]);
+  }, [bannerProjects, dispatch]);
 
   return (
     <Container
       type="button"
+      className={`${className} ${page.isHome && 'hidden'}`}
       onClick={() => {
         backHome();
       }}
     >
-      Home
+      {children}
     </Container>
   );
 }
+
+HomeBack.defaultProps = {
+  className: '',
+};
+
+HomeBack.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
 
 export default HomeBack;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
-import { setCurrent } from '~/store/modules/page/actions';
 
 import Banner from '~/components/Banner';
 
@@ -14,10 +13,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(completeLoadBar());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(setCurrent('Home'));
   }, [dispatch]);
 
   return (

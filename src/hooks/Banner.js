@@ -5,7 +5,7 @@ import { requestProjects } from '~/store/modules/banner/actions';
 
 const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
 
-const useBanner = () => {
+export const useBanner = () => {
   const dispatch = useDispatch();
 
   const banner = useSelector(state => state.banner);
@@ -30,5 +30,3 @@ const useBanner = () => {
 
   return { inBanner: !!inBanner, bannerPosition, activeProject, ...banner };
 };
-
-export default useBanner;

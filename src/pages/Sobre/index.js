@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,6 +6,7 @@ import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { setCurrent } from '~/store/modules/page/actions';
 
 import code from '~/assets/temp/code.jpg';
+import Footer from '~/components/Footer';
 
 import {
   Container,
@@ -15,9 +15,6 @@ import {
   ContentBox,
   TextBox,
   Text,
-  Footer,
-  Social,
-  SocialItem,
   CodeBox,
   Skills,
   List,
@@ -108,25 +105,7 @@ export default function Sobre() {
           </List>
         </Skills>
       </ContentBox>
-      <Footer>
-        <Social>
-          <SocialItem>
-            <a href="/#">
-              <FaInstagram />
-            </a>
-          </SocialItem>
-          <SocialItem>
-            <a href="/#">
-              <FaLinkedinIn />
-            </a>
-          </SocialItem>
-          <SocialItem>
-            <a href="/#">
-              <FaBitbucket />
-            </a>
-          </SocialItem>
-        </Social>
-      </Footer>
+      <Footer />
     </Container>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaInstagram, FaLinkedinIn, FaCodeBranch } from 'react-icons/fa';
 
-import useBanner from '~/hooks/useBanner';
+import { useBanner } from '~/hooks/Banner';
 
 import Nav from './Nav';
 import Project from './Project';

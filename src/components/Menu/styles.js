@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
-export const Container = styled.nav``;
+export const Container = styled.nav`
+  position: absolute;
+`;
 
 export const Hamburguer = styled.span`
   position: fixed;
