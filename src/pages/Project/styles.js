@@ -24,7 +24,8 @@ export const Banner = styled.div`
   justify-content:center;
   align-items:center;
   display:flex;
-  margin-bottom: calc(${Spaces.BaseMargin}*10);
+  background-attachment:fixed;
+  margin-bottom:calc(${Spaces.BaseMargin}*10);
   &::after{
     content: '';
     position: absolute;
