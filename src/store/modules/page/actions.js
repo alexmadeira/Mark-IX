@@ -1,7 +1,6 @@
 import types from './types';
 
-export function setCurrent(current, w) {
-  console.tron.log(w, current);
+export function setCurrent(current) {
   return {
     type: types.setCurrent,
     payload: { current },
