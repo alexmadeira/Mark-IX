@@ -13,11 +13,11 @@ export default function Project() {
   return (
     <Container className={loaded && 'loaded'}>
       <Title>
-        {loaded && activeBanner.title}
-        <Type> {loaded && activeBanner.type}</Type>
+        {loaded && activeBanner.name}
+        <Type> {loaded && activeBanner.description}</Type>
       </Title>
       {loaded && <Timer start={0} />}
-      <Paragraph>{loaded && activeBanner.description}</Paragraph>
+      <Paragraph>{loaded && activeBanner.longDescription}</Paragraph>
     </Container>
   );
 }

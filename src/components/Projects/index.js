@@ -31,6 +31,11 @@ export default function Projects() {
   useEffect(() => {
     dispatch(requestProjects());
   }, [dispatch]);
+
+  if (projects.length) {
+    return null;
+  }
+
   return (
     <Container>
       <SquaresMenu className={open && 'open'} onClick={toggleProjects}>

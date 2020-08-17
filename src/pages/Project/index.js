@@ -51,6 +51,10 @@ function Project({ match: { params }, disabled }) {
     return () => window.removeEventListener('load', handler);
   }, [parallaxController]);
 
+  if (!project.name) {
+    return null;
+  }
+
   return (
     <Container>
       <HomeBack className="logo" projectId={project.id}>
@@ -58,14 +62,14 @@ function Project({ match: { params }, disabled }) {
       </HomeBack>
       <Banner>
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
-          <img src={project.banner} alt="" />
+          <img src={project.background.url} alt={project.background.name} />
         </Parallax>
-        <Name className={page.isHome && 'hidden'}>{project.title}</Name>
+        <Name className={page.isHome && 'hidden'}>{project.name}</Name>
       </Banner>
 
       <Header>
-        <HeaderTitle>{project.title}</HeaderTitle>
-        <HeaderDescription>{project.description}</HeaderDescription>
+        <HeaderTitle>{project.name}</HeaderTitle>
+        <HeaderDescription>{project.longDescription}</HeaderDescription>
       </Header>
       <MobileList>
         <li>
@@ -80,20 +84,20 @@ function Project({ match: { params }, disabled }) {
       </MobileList>
       <Preview>
         <Parallax y={[-20, 20]} tagOuter="figure">
-          <img src={project.banner} alt="" />
+          <img src={project.destaque.url} alt="" />
         </Parallax>
       </Preview>
       <PreviewScreens>
         <Parallax className="left" x={[-100, 30]} tagOuter="figure">
           <img
-            alt=""
-            src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            alt={project.destaqueEsquerda.name}
+            src={project.destaqueEsquerda.url}
           />
         </Parallax>
         <Parallax className="right" x={[100, -50]} tagOuter="figure">
           <img
-            alt=""
-            src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1430&q=80"
+            alt={project.destaqueDireita.name}
+            src={project.destaqueDireita.url}
           />
         </Parallax>
       </PreviewScreens>
