@@ -34,7 +34,6 @@ export default function ProjectPreview() {
   useEffect(() => {
     if (page.isHome && open) {
       setTimeout(() => {
-        console.tron.log('sss');
         dispatch(closeProject());
       }, 900);
     }
@@ -58,7 +57,11 @@ export default function ProjectPreview() {
       }}
     >
       <ProjectContainer>
-        {loaded ? <Project match={projectData} /> : 'carregando'}
+        {loaded ? (
+          <Project match={projectData} disabled={!open} />
+        ) : (
+          'carregando'
+        )}
       </ProjectContainer>
     </Container>
   );

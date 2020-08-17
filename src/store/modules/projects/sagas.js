@@ -17,8 +17,8 @@ export function* getProjects() {
 export function* getProject({ payload }) {
   const { slug } = payload;
   try {
-    const response = yield call(api.get, `/project/${slug}`);
-    yield put(successRequestProject(response.data));
+    const { data } = yield call(api.get, `/projects?slug=${slug}`);
+    yield put(successRequestProject(data[0]));
   } catch (err) {
     console.tron.log(err);
   }

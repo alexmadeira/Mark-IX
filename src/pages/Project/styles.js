@@ -17,23 +17,24 @@ export const Banner = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-size: cover;
-  background-position: top center;
-  background-image: url('${props => props.background}');
   position: relative;
-  justify-content:center;
-  align-items:center;
-  display:flex;
-  background-attachment:fixed;
-  margin-bottom:calc(${Spaces.BaseMargin}*10);
-  &::after{
+  margin-bottom: calc(${Spaces.BaseMargin}*10);
+  .parallax-inner {
+    img {
+      height: 100vh;
+      width: 100vw;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  &::after {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 2;
   }
   @media (max-width: 780px) {
@@ -47,6 +48,10 @@ export const Name = styled.h1`
   font-size: 8.5rem;
   line-height: calc(8.5rem + 10px);
   opacity: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   transition: 500ms;
   &.hidden {
     opacity: 0;
@@ -111,6 +116,12 @@ export const MobileList = styled.ul`
 
 export const PreviewMovie = styled.div`
   background: #069;
+  overflow: hidden;
   width: 100%;
   height: 80vh;
+  .parallax-inner {
+    img {
+      width: 100%;
+    }
+  }
 `;

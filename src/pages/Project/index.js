@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 import PropTypes from 'prop-types';
 
@@ -23,7 +24,7 @@ import {
   PreviewMovie,
 } from './styles';
 
-function Project({ match: { params } }) {
+function Project({ match: { params }, disabled }) {
   const { slug } = params;
 
   const dispatch = useDispatch();
@@ -39,52 +40,56 @@ function Project({ match: { params } }) {
     dispatch(completeLoadBar());
   }, [dispatch]);
 
-  const background =
-    'https://compass.jeep.com.br/img-desktop/galeria/new/galeria-desk(2).jpg';
-
   return (
-    <Container>
-      <HomeBack className="logo" projectId={project._id}>
-        <Emoji />
-      </HomeBack>
+    <ParallaxProvider>
+      <Container>
+        <HomeBack className="logo" projectId={project.id}>
+          <Emoji />
+        </HomeBack>
+        <Banner>
+          <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
+            <img src={project.banner} alt="" />
+          </Parallax>
+          <Name className={page.isHome && 'hidden'}>{project.title}</Name>
+        </Banner>
 
-      <Banner background={background}>
-        <Name className={page.isHome && 'hidden'}>{project.title}</Name>
-      </Banner>
-      <Header>
-        <HeaderTitle>{project.title}</HeaderTitle>
-        <HeaderDescription>
-          Nunc rutrum pulvinar posuere. Cras lorem erat, pharetra eget ante a,
-          tempor viverra arcu. Phasellus mattis non nisi ut porta. Sed tempor eu
-          lectus nec euismod. Integer consectetur odio ut urna porta ultrices.
-          Morbi ac tempor risus, eu interdum est. Sed neque mi, feugiat ac odio
-          tempor, porttitor cursus odio. Integer malesuada eu massa a eleifend.
-          Curabitur tempus porttitor orci, at blandit sapien vulputate non.
-          Morbi tempor, enim et commodo dignissim, justo metus tincidunt leo, eu
-          eleifend quam orci in odio. Curabitur vel lorem semper, venenatis
-          magna sit amet, semper lacus.
-        </HeaderDescription>
-      </Header>
-      <MobileList>
-        <li>
-          <img src={cell} alt="" />
-        </li>
-        <li>
-          <img src={cell} alt="" />
-        </li>
-        <li>
-          <img src={cell} alt="" />
-        </li>
-      </MobileList>
-      <PreviewMovie />
-      <Footer />
-    </Container>
+        <Header>
+          <HeaderTitle>{project.title}</HeaderTitle>
+          <HeaderDescription>{project.description}</HeaderDescription>
+        </Header>
+        <MobileList>
+          <li>
+            <img src={cell} alt="" />
+          </li>
+          <li>
+            <img src={cell} alt="" />
+          </li>
+          <li>
+            <img src={cell} alt="" />
+          </li>
+        </MobileList>
+        <PreviewMovie>
+          <Parallax y={[-20, 20]} tagOuter="figure">
+            <img src={project.banner} alt="" />
+          </Parallax>
+        </PreviewMovie>
+        <PreviewMovie />
+        <PreviewMovie />
+        <PreviewMovie />
+        <Footer />
+      </Container>
+    </ParallaxProvider>
   );
 }
+Project.defaultProps = {
+  disabled: false,
+};
+
 Project.propTypes = {
+  disabled: PropTypes.bool,
   match: PropTypes.shape({
     params: PropTypes.shape({ slug: PropTypes.string }).isRequired,
   }).isRequired,
 };
 
-export default Project;
+export default memo(Project);

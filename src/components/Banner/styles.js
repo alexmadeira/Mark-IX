@@ -113,6 +113,7 @@ export const Social = styled.ul`
   justify-content: flex-start;
   align-items: center;
 `;
+
 export const SocialItem = styled.li`
   list-style: none;
   margin: ${Spaces.BaseMargin} calc(${Spaces.BaseMargin} * 2) 0 0;
