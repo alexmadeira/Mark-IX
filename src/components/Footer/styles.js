@@ -8,6 +8,8 @@ export const Container = styled.footer`
   width: 100%;
   z-index: 5;
   padding: calc(${Spaces.BasePadding} * 3);
+  transition: opacity 250ms ease;
+  opacity: 1;
   @media (max-width: 720px) {
     position: initial;
   }

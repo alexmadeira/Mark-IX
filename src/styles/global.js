@@ -50,7 +50,7 @@ body {
   left:0;
   top:0;
   opacity:0;
-  transition:all ${transitionDelay / 2}ms linear
+  transition:all ${transitionDelay / 2}ms ease
 }
 .page-exit {
   position:absolute;

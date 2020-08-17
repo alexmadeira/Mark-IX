@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import '~/config/ReactotronConfig';
 
@@ -16,13 +17,15 @@ import { store } from './store';
 function App() {
   return (
     <Provider store={store}>
-      <LoadBar />
-      <Router history={history}>
-        <Projects />
-        <Menu />
-        <GlobalStyle />
-        <Routes />
-      </Router>
+      <ParallaxProvider>
+        <LoadBar />
+        <Router history={history}>
+          <Projects />
+          <Menu />
+          <GlobalStyle />
+          <Routes />
+        </Router>
+      </ParallaxProvider>
     </Provider>
   );
 }

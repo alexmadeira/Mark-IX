@@ -4,6 +4,8 @@ import RandonEmoji from '~/components/Emoji';
 import { Colors } from '~/styles/Metrics';
 import Spaces from '~/styles/Metrics/spaces';
 
+const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
+
 export const Container = styled.div`
   background: #fff;
 `;
@@ -19,23 +21,15 @@ export const Banner = styled.div`
   overflow: hidden;
   position: relative;
   margin-bottom: calc(${Spaces.BaseMargin}*10);
+  background: #000;
   .parallax-inner {
     img {
       height: 100vh;
       width: 100vw;
       object-fit: cover;
       object-position: center;
+      opacity: 0.2;
     }
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 2;
   }
   @media (max-width: 780px) {
     margin-bottom: 0;
@@ -52,7 +46,7 @@ export const Name = styled.h1`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: 500ms;
+  transition: ${openDelay}ms;
   &.hidden {
     opacity: 0;
   }
@@ -114,14 +108,51 @@ export const MobileList = styled.ul`
   }
 `;
 
-export const PreviewMovie = styled.div`
-  background: #069;
+export const Preview = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 80vh;
+  height: 95vh;
+  margin-bottom: calc(${Spaces.BaseMargin} * 10);
   .parallax-inner {
     img {
       width: 100%;
     }
+  }
+`;
+
+export const PreviewScreens = styled.div`
+  width: 100%;
+  height: 150vh;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: calc(${Spaces.BaseMargin} * 5);
+  img {
+    width: 60vw;
+  }
+  figure {
+    position: absolute;
+    &.left {
+      top: 0;
+    }
+    &.right {
+      bottom: 0;
+    }
+  }
+`;
+
+export const TextBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: ${Spaces.BasePadding} calc(${Spaces.BasePadding} * 20);
+  & > * {
+    margin-bottom: ${Spaces.BasePadding};
+    font-size: 2rem;
   }
 `;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
 export const ProjectContainer = styled.div`
-  opacity: 1;
   height: 100vw;
   width: 100%;
   position: relative;
@@ -13,15 +12,18 @@ export const ProjectContainer = styled.div`
   .parallax-inner {
     transform: translate3d(0px, 0px, 0px) !important;
   }
+  footer {
+    opacity: 0;
+  }
   &::after {
-    content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+    opacity: 1;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 2;
+    transition: all ${openDelay}ms ease;
   }
 `;
 
@@ -36,7 +38,9 @@ export const Container = styled.div`
   &.open {
     left: 0%;
     ${ProjectContainer} {
-      opacity: 1;
+      &::after {
+        content: none;
+      }
     }
   }
 
