@@ -35,6 +35,7 @@ export const Container = styled.div`
   overflow: hidden;
   z-index: 2;
   transition: all ${openDelay}ms ease;
+  cursor: pointer;
   &.open {
     left: 0%;
     ${ProjectContainer} {

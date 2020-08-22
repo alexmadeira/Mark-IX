@@ -8,6 +8,8 @@ import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { requestProject } from '~/store/modules/projects/actions';
 
 import cell from '~/assets/temp/01.png';
+import tela1 from '~/assets/temp/tela1.png';
+import tela2 from '~/assets/temp/tela2.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
 import { usePage } from '~/hooks/Page';
@@ -88,17 +90,11 @@ function Project({ match: { params }, disabled }) {
         </Parallax>
       </Preview>
       <PreviewScreens>
-        <Parallax className="left" x={[-100, 30]} tagOuter="figure">
-          <img
-            alt={project.destaqueEsquerda.name}
-            src={project.destaqueEsquerda.url}
-          />
+        <Parallax className="left" x={[-100, 0]} tagOuter="figure">
+          <img alt={project.destaqueEsquerda.name} src={tela1} />
         </Parallax>
-        <Parallax className="right" x={[100, -50]} tagOuter="figure">
-          <img
-            alt={project.destaqueDireita.name}
-            src={project.destaqueDireita.url}
-          />
+        <Parallax className="right" x={[100, 0]} tagOuter="figure">
+          <img alt={project.destaqueDireita.name} src={tela2} />
         </Parallax>
       </PreviewScreens>
       <TextBox>
@@ -112,6 +108,7 @@ function Project({ match: { params }, disabled }) {
           adasd as
         </p>
       </TextBox>
+
       <Footer />
     </Container>
   );

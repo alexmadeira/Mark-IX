@@ -63,6 +63,9 @@ export const Spotlight = styled.div`
       flex: initial;
       margin-right: ${Spaces.BaseMargin};
     }
+    @media (max-width: 410px) {
+      font-size: calc(${Fonts.Sizes.Banner.spotlight} / 1.16);
+    }
   }
   @media (max-width: 980px) and (min-width: 780px) {
     flex-direction: column;
@@ -91,7 +94,6 @@ export const Emoji = styled(RandonEmoji)`
   }
   @media (max-width: 390px) {
     width: 35%;
-    margin-bottom: calc(${Spaces.BaseMargin}*2);
   }
 `;
 
@@ -105,6 +107,9 @@ export const Highlighted = styled.h2`
   }
   @media (max-width: 780px) {
     text-align: left;
+  }
+  @media (max-width: 410px) {
+    font-size: calc(${Fonts.Sizes.Banner.highlighted} / 1.16);
   }
 `;
 
@@ -131,5 +136,8 @@ export const SocialItem = styled.li`
         transform: scale(1.2);
       }
     }
+  }
+  @media (max-width: 390px) {
+    display: none;
   }
 `;
