@@ -12,16 +12,3 @@ export function successRequestProjects(projects) {
     payload: { projects },
   };
 }
-export function requestProject(slug) {
-  return {
-    type: types.requestProject,
-    payload: { slug },
-  };
-}
-
-export function successRequestProject(project) {
-  return {
-    type: types.successRequestProject,
-    payload: { project },
-  };
-}

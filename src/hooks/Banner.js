@@ -10,7 +10,7 @@ export const useBanner = () => {
 
   const banner = useSelector(state => state.banner);
 
-  const { project } = useSelector(state => state.projects);
+  const { project } = useSelector(state => state.project);
 
   useEffect(() => {
     if (!banner.loaded && !banner.loading) {

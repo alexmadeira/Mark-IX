@@ -5,13 +5,15 @@ import { Parallax, useController } from 'react-scroll-parallax';
 import PropTypes from 'prop-types';
 
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
-import { requestProject } from '~/store/modules/projects/actions';
+import { requestProject } from '~/store/modules/project/actions';
 
 import cell from '~/assets/temp/01.png';
 import tela1 from '~/assets/temp/tela1.png';
 import tela2 from '~/assets/temp/tela2.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
+import ImageShimmer from '~/components/ImageShimmer';
+import Shimmer from '~/components/Shimmer';
 import { usePage } from '~/hooks/Page';
 
 import {
@@ -36,7 +38,7 @@ function Project({ match: { params }, disabled }) {
   const dispatch = useDispatch();
   const page = usePage();
 
-  const { project } = useSelector(state => state.projects);
+  const { project, loaded } = useSelector(state => state.project);
 
   useEffect(() => {
     dispatch(requestProject(slug));
@@ -53,25 +55,50 @@ function Project({ match: { params }, disabled }) {
     return () => window.removeEventListener('load', handler);
   }, [parallaxController]);
 
-  if (!project.name) {
-    return null;
-  }
-
   return (
     <Container>
-      <HomeBack className="logo" projectId={project.id}>
+      <HomeBack className="logo">
         <Emoji />
       </HomeBack>
       <Banner>
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
-          <img src={project.background.url} alt={project.background.name} />
+          <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
+            <img
+              src={loaded && project.background.url}
+              alt={loaded && project.background.name}
+              onLoad={e => e.target.classList.add('loaded')}
+            />
+          </ImageShimmer>
         </Parallax>
-        <Name className={page.isHome && 'hidden'}>{project.name}</Name>
+        <Name className={page.isHome && 'hidden'}>
+          {loaded ? (
+            project.name
+          ) : (
+            <Shimmer type="line" h="70px" w="300px" flex={false} />
+          )}
+        </Name>
       </Banner>
 
       <Header>
-        <HeaderTitle>{project.name}</HeaderTitle>
-        <HeaderDescription>{project.longDescription}</HeaderDescription>
+        <HeaderTitle>
+          {loaded ? (
+            project.name
+          ) : (
+            <Shimmer type="line" h="70px" w="300px" flex={false} />
+          )}
+        </HeaderTitle>
+
+        <HeaderDescription>
+          {loaded ? (
+            project.longDescription
+          ) : (
+            <>
+              <Shimmer type="line" h="10px" w="100px" m="0 0 8px 0" />
+              <Shimmer type="line" h="10px" w="100px" m="0 0 8px 0" />
+              <Shimmer type="line" h="10px" w="100px" m="0 0 8px 0" />
+            </>
+          )}
+        </HeaderDescription>
       </Header>
       <MobileList>
         <li>
@@ -86,16 +113,28 @@ function Project({ match: { params }, disabled }) {
       </MobileList>
       <Preview>
         <Parallax y={[-20, 20]} tagOuter="figure">
-          <img src={project.destaque.url} alt="" />
+          <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
+            <img
+              src={loaded && project.destaque.url}
+              alt=""
+              onLoad={e => e.target.classList.add('loaded')}
+            />
+          </ImageShimmer>
         </Parallax>
       </Preview>
       <PreviewScreens>
-        <Parallax className="left" x={[-100, 0]} tagOuter="figure">
-          <img alt={project.destaqueEsquerda.name} src={tela1} />
-        </Parallax>
-        <Parallax className="right" x={[100, 0]} tagOuter="figure">
-          <img alt={project.destaqueDireita.name} src={tela2} />
-        </Parallax>
+        <img
+          alt={loaded && project.destaqueEsquerda.name}
+          src={tela1}
+          className="top"
+          onLoad={e => e.target.classList.add('loaded')}
+        />
+        <img
+          alt={loaded && project.destaqueDireita.name}
+          src={tela2}
+          className="bottom"
+          onLoad={e => e.target.classList.add('loaded')}
+        />
       </PreviewScreens>
       <TextBox>
         <p>

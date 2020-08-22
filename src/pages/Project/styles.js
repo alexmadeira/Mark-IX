@@ -23,12 +23,19 @@ export const Banner = styled.div`
   margin-bottom: calc(${Spaces.BaseMargin}*10);
   background: #000;
   .parallax-inner {
+    .opacity {
+      opacity: 0.4;
+    }
     img {
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      width: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.2;
+      opacity: 0;
+      transition: ${openDelay}ms;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
   @media (max-width: 780px) {
@@ -80,6 +87,7 @@ export const HeaderDescription = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: calc(${Spaces.BasePadding}*3);
   font-size: 2rem;
   line-height: calc(2rem + 10px);
@@ -111,19 +119,26 @@ export const MobileList = styled.ul`
 export const Preview = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 95vh;
-  margin-bottom: calc(${Spaces.BaseMargin} * 10);
+  height: 100vh;
+  margin-bottom: calc(${Spaces.BaseMargin} * 5);
   .parallax-inner {
     img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transition: ${openDelay}ms;
+      &.loaded {
+        opacity: 1;
+      }
     }
   }
 `;
 
 export const PreviewScreens = styled.div`
   width: 100%;
-  height: 150vh;
-
+  height: 120vh;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -131,7 +146,23 @@ export const PreviewScreens = styled.div`
   position: relative;
   margin-bottom: calc(${Spaces.BaseMargin} * 5);
   img {
-    width: 60vw;
+    height: 55%;
+    opacity: 0;
+    transition: ${openDelay}ms;
+    position: absolute;
+    left: 50%;
+    &.top {
+      transform: translateX(-80%);
+      top: 0;
+    }
+    &.bottom {
+      transform: translateX(-20%);
+      bottom: 0;
+    }
+
+    &.loaded {
+      opacity: 1;
+    }
   }
   figure {
     position: absolute;
