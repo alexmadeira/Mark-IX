@@ -10,16 +10,17 @@ export const Container = styled.nav`
 
 const Squares = styled.em`
   position: relative;
-  border: 2px solid ${Colors.White};
+  border: 2px solid currentColor;
   width: 10px;
   height: 10px;
   margin-top: 5px;
   display: flex;
   transition: all 0.5s ease;
+
   &::after {
     position: absolute;
     content: '';
-    border: 2px solid ${Colors.White};
+    border: 2px solid currentColor;
     width: 100%;
     height: 100%;
     right: calc(100% + 8px);
@@ -29,12 +30,19 @@ const Squares = styled.em`
   &::before {
     position: absolute;
     content: '';
-    border: 2px solid ${Colors.White};
+    border: 2px solid currentColor;
     width: 100%;
     height: 100%;
     left: calc(100% + 8px);
     top: -2px;
     transition: all 0.5s ease;
+  }
+  &.dark {
+    border: 2px solid ${Colors.Black};
+    &::after,
+    &::before {
+      border: 2px solid ${Colors.Black};
+    }
   }
   @media (max-width: 550px) {
     display: none;
@@ -60,44 +68,46 @@ export const SquaresMenu = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: ${Colors.White};
   &.open {
+    color: ${Colors.White};
     ${Squares} {
       margin: 0;
       height: 18px;
     }
     ${SquaresTop} {
       border: 0px solid transparent;
-      border-top: 2px solid ${Colors.White};
+      border-top: 2px solid currentColor;
       width: 13px;
       &::after {
         border: 0 solid transparent;
-        border-top: 2px solid ${Colors.White};
-        border-left: 2px solid ${Colors.White};
+        border-top: 2px solid currentColor;
+        border-left: 2px solid currentColor;
         right: 100%;
       }
       &::before {
         border: 0 solid transparent;
-        border-top: 2px solid ${Colors.White};
-        border-right: 2px solid ${Colors.White};
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
         left: 100%;
       }
     }
     ${SquaresBottom} {
       border: 0px solid transparent;
-      border-bottom: 2px solid ${Colors.White};
+      border-bottom: 2px solid currentColor;
       width: 13px;
       &::after {
         border: 0 solid transparent;
-        border-bottom: 2px solid ${Colors.White};
-        border-left: 2px solid ${Colors.White};
+        border-bottom: 2px solid currentColor;
+        border-left: 2px solid currentColor;
         right: 100%;
         top: initial;
         bottom: -2px;
       }
       &::before {
         border: 0 solid transparent;
-        border-bottom: 2px solid ${Colors.White};
-        border-right: 2px solid ${Colors.White};
+        border-bottom: 2px solid currentColor;
+        border-right: 2px solid currentColor;
         left: 100%;
         bottom: -2px;
         top: initial;
@@ -105,12 +115,12 @@ export const SquaresMenu = styled.span`
     }
     ${SquaresMiddle} {
       border: 0 solid transparent;
-      background: ${Colors.White};
+      background: currentColor;
       width: 6px;
       height: 6px;
       &::after {
         border: 0 solid transparent;
-        border-left: 2px solid ${Colors.White};
+        border-left: 2px solid currentColor;
         right: 100%;
         top: 50%;
         width: calc(100% + 10.5px);
@@ -119,7 +129,7 @@ export const SquaresMenu = styled.span`
       }
       &::before {
         border: 0 solid transparent;
-        border-right: 2px solid ${Colors.White};
+        border-right: 2px solid currentColor;
         left: 100%;
         top: 50%;
         width: calc(100% + 10.5px);

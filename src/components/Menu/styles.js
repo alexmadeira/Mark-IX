@@ -16,12 +16,13 @@ export const Hamburguer = styled.span`
   height: 40px;
   z-index: 26;
   cursor: pointer;
+  color: ${Colors.White};
   &::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 5px;
-    background: ${Colors.White};
+    background: currentColor;
     top: 10px;
     transition: all 0.4s ease;
     transform-origin: left center;
@@ -31,7 +32,7 @@ export const Hamburguer = styled.span`
     position: absolute;
     width: 100%;
     height: 5px;
-    background: ${Colors.White};
+    background: currentColor;
     bottom: 10px;
     transform-origin: center;
     transition: all 0.25s ease;
@@ -44,6 +45,9 @@ export const Hamburguer = styled.span`
     &::after {
       bottom: 9px;
     }
+  }
+  &.dark:not(.open) {
+    color: ${Colors.Black};
   }
   &.open {
     &::after {

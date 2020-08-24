@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openProjects, closeProjects } from '~/store/modules/menu/actions';
 import { requestProjects } from '~/store/modules/projects/actions';
 
+import { useScollDarkMode } from '~/hooks/Scoll';
+
 import Project from './Project';
 import {
   Container,
@@ -17,6 +19,7 @@ import {
 export default function Projects() {
   const dispatch = useDispatch();
 
+  const darkMode = useScollDarkMode(100);
   const open = useSelector(state => state.menu.projectsOpen);
   const { loaded, projects } = useSelector(state => state.projects);
 
@@ -39,9 +42,9 @@ export default function Projects() {
   return (
     <Container>
       <SquaresMenu className={open && 'open'} onClick={toggleProjects}>
-        <SquaresTop />
-        <SquaresMiddle />
-        <SquaresBottom />
+        <SquaresTop className={darkMode && 'dark'} />
+        <SquaresMiddle className={darkMode && 'dark'} />
+        <SquaresBottom className={darkMode && 'dark'} />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
         {projects.map(({ id, title, slug, logo, preview }) => (

@@ -8,12 +8,14 @@ import {
   openProjects,
 } from '~/store/modules/menu/actions';
 
+import { useScollDarkMode } from '~/hooks/Scoll';
+
 import { Container, Hamburguer, MenuContainer, MenuItem } from './styles';
 
 export default function Menu() {
   const dispatch = useDispatch();
   const open = useSelector(state => state.menu.menuOpen);
-
+  const darkMode = useScollDarkMode(850);
   const toggleMenu = () => {
     if (open) {
       dispatch(closeMenu());
@@ -27,7 +29,10 @@ export default function Menu() {
 
   return (
     <Container>
-      <Hamburguer className={open && 'open'} onClick={toggleMenu} />
+      <Hamburguer
+        className={`${open && 'open'} ${darkMode && 'dark'}`}
+        onClick={toggleMenu}
+      />
       <MenuContainer className={open && 'open'}>
         <MenuItem>
           <Link to="/">Home</Link>

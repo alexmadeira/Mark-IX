@@ -1,11 +1,14 @@
 import React from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 
+import { useScollDarkMode } from '~/hooks/Scoll';
+
 import { Container, Social, SocialItem } from './styles';
 
 export default function Footer() {
+  const darkMode = useScollDarkMode(60);
   return (
-    <Container>
+    <Container className={darkMode && 'dark'}>
       <Social>
         <SocialItem>
           <a href="/#">
