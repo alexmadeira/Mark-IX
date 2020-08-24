@@ -18,7 +18,7 @@ export default function Projects() {
   const dispatch = useDispatch();
 
   const open = useSelector(state => state.menu.projectsOpen);
-  const { projects } = useSelector(state => state.projects);
+  const { loaded, projects } = useSelector(state => state.projects);
 
   const toggleProjects = () => {
     if (open) {
@@ -32,7 +32,7 @@ export default function Projects() {
     dispatch(requestProjects());
   }, [dispatch]);
 
-  if (projects.length) {
+  if (!loaded) {
     return null;
   }
 
@@ -44,9 +44,9 @@ export default function Projects() {
         <SquaresBottom />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
-        {projects.map(({ _id, title, slug, logo, preview }) => (
+        {projects.map(({ id, title, slug, logo, preview }) => (
           <Project
-            key={_id}
+            key={id}
             title={title}
             slug={slug}
             logo={logo}

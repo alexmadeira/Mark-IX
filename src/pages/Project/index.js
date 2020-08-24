@@ -8,8 +8,6 @@ import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { requestProject } from '~/store/modules/project/actions';
 
 import cell from '~/assets/temp/01.png';
-import tela1 from '~/assets/temp/tela1.png';
-import tela2 from '~/assets/temp/tela2.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
 import ImageShimmer from '~/components/ImageShimmer';
@@ -64,15 +62,15 @@ function Project({ match: { params }, disabled }) {
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={loaded && project.background.url}
-              alt={loaded && project.background.name}
+              src={loaded && project.banner.file.url}
+              alt={loaded && project.banner.fileName}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>
         </Parallax>
         <Name className={page.isHome && 'hidden'}>
           {loaded ? (
-            project.name
+            project.title
           ) : (
             <Shimmer type="line" h="70px" w="300px" flex={false} />
           )}
@@ -82,7 +80,11 @@ function Project({ match: { params }, disabled }) {
       <Header>
         <HeaderTitle>
           {loaded ? (
-            project.name
+            <img
+              src={loaded && project.logo.file.url}
+              alt={loaded && project.logo.fileName}
+              onLoad={e => e.target.classList.add('loaded')}
+            />
           ) : (
             <Shimmer type="line" h="70px" w="300px" flex={false} />
           )}
@@ -90,7 +92,7 @@ function Project({ match: { params }, disabled }) {
 
         <HeaderDescription>
           {loaded ? (
-            project.longDescription
+            project.description
           ) : (
             <>
               <Shimmer type="line" h="10px" w="100px" m="0 0 8px 0" />
@@ -115,8 +117,8 @@ function Project({ match: { params }, disabled }) {
         <Parallax y={[-20, 20]} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={loaded && project.destaque.url}
-              alt=""
+              src={loaded && project.preview.file.url}
+              alt={loaded && project.preview.title}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>
@@ -124,28 +126,20 @@ function Project({ match: { params }, disabled }) {
       </Preview>
       <PreviewScreens>
         <img
-          alt={loaded && project.destaqueEsquerda.name}
-          src={tela1}
+          alt={loaded && project.preview.title}
+          src={loaded && project.preview.file.url}
           className="top"
           onLoad={e => e.target.classList.add('loaded')}
         />
         <img
-          alt={loaded && project.destaqueDireita.name}
-          src={tela2}
+          alt={loaded && project.preview.title}
+          src={loaded && project.preview.file.url}
           className="bottom"
           onLoad={e => e.target.classList.add('loaded')}
         />
       </PreviewScreens>
       <TextBox>
-        <p>
-          lorem asdsadas asdasd adasd as orem asdsadas asdasd adasd as orem
-          asdsadas asdasd adasd as
-        </p>
-        <p>
-          lorem asdsadas asdasd adasd as orem asdsadas asdasd adasd as orem
-          asdsadasd adasd as orem asdsadas asdasd adasd as orem asdsadas asdasd
-          adasd as
-        </p>
+        <p>{project.technologies}</p>
       </TextBox>
 
       <Footer />
