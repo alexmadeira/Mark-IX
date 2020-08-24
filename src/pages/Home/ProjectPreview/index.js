@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import {
   pauseTimer,
@@ -17,6 +18,8 @@ import history from '~/services/history';
 import { Container, ProjectContainer } from './styles';
 
 const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
+
+const transtionDelay = process.env.REACT_APP_PAGE_TRANSITION_DELAY;
 
 export default function ProjectPreview() {
   const dispatch = useDispatch();
@@ -57,11 +60,15 @@ export default function ProjectPreview() {
       }}
     >
       <ProjectContainer>
-        {loaded ? (
-          <Project match={projectData} disabled={!open} />
-        ) : (
-          'carregando'
-        )}
+        <TransitionGroup className="teste">
+          <CSSTransition
+            key={projectData.params.slug}
+            timeout={transtionDelay}
+            classNames="page"
+          >
+            <Project match={projectData} disabled={!open} />
+          </CSSTransition>
+        </TransitionGroup>
       </ProjectContainer>
     </Container>
   );

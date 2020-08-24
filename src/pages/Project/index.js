@@ -62,8 +62,8 @@ function Project({ match: { params }, disabled }) {
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={loaded && project.banner.file.url}
-              alt={loaded && project.banner.fileName}
+              src={project.id && project.banner.file.url}
+              alt={project.id && project.banner.fileName}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>

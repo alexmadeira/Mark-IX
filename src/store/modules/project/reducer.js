@@ -15,7 +15,10 @@ export default function banner(state = INITIAL_STATE, action) {
         draft.loaded = true;
         break;
       }
-
+      case types.requestProject: {
+        draft.loaded = false;
+        break;
+      }
       default:
     }
   });

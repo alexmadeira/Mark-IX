@@ -8,9 +8,8 @@ export const Title = styled.h3`
   line-height: calc(${Fonts.Sizes.Banner.title} + 10px);
   transition: all 250ms ease;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   margin-bottom: ${Spaces.BaseMargin};
   @media (max-width: 410px) {
     margin: ${Spaces.BaseMargin} 0;
@@ -21,15 +20,21 @@ export const Type = styled.small`
   font-weight: normal;
   font-size: ${Fonts.Sizes.Banner.type};
   line-height: calc(${Fonts.Sizes.Banner.type} + 10px);
+  margin-left: calc(${Spaces.BaseMargin}*2);
+  padding-left: calc(${Spaces.BaseMargin}*2);
   position: relative;
   transition: all 250ms ease;
   transition-delay: 180ms;
-  display: flex;
-  width: 100%;
   flex: 1;
-  margin-top: ${Spaces.BaseMargin};
-  @media (max-width: 410px) {
-    display: none;
+  &::after {
+    content: '';
+    background: #ffffff;
+    height: 5px;
+    width: 20px;
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
