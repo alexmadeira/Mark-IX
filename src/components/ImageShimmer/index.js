@@ -23,8 +23,8 @@ ImageShimmer.defaultProps = {
 ImageShimmer.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  h: PropTypes.number,
-  w: PropTypes.number,
+  h: PropTypes.string,
+  w: PropTypes.string,
   m: PropTypes.string,
   flex: PropTypes.bool,
 };

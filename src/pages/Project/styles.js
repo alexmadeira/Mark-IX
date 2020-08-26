@@ -8,6 +8,12 @@ const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
 export const Container = styled.div`
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  overflow-x: hidden;
 `;
 
 export const Emoji = styled(RandonEmoji)`
@@ -99,7 +105,7 @@ export const HeaderDescription = styled.p`
 
 export const MobileList = styled.ul`
   display: flex;
-  max-width: 1600px;
+  max-width: 100%;
   margin: calc(${Spaces.BaseMargin}*5) auto 0 auto;
   padding: calc(${Spaces.BasePadding}*5);
   justify-content: flex-start;

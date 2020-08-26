@@ -19,6 +19,7 @@ export default function banner(state = INITIAL_STATE, action) {
         draft.loaded = false;
         break;
       }
+
       default:
     }
   });

@@ -1,4 +1,4 @@
 export default {
-  requestProject: '@projects/REQUEST_PROJECT',
-  successRequestProject: '@projects/SUCCESS_REQUEST_PROJECT',
+  requestProject: '@project/REQUEST_PROJECT',
+  successRequestProject: '@project/SUCCESS_REQUEST_PROJECT',
 };

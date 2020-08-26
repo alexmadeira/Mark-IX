@@ -19,7 +19,10 @@ import { Container, ProjectContainer } from './styles';
 
 const openDelay = process.env.REACT_APP_OPEN_PROJECT_TIMER;
 
-const transtionDelay = process.env.REACT_APP_PAGE_TRANSITION_DELAY;
+const transtionDelay = parseInt(
+  process.env.REACT_APP_PAGE_TRANSITION_DELAY,
+  10
+);
 
 export default function ProjectPreview() {
   const dispatch = useDispatch();
@@ -28,11 +31,7 @@ export default function ProjectPreview() {
   const currentPage = useSelector(state => state.page.current);
   const { open, loaded, activeProject } = useBanner();
 
-  const projectData = {
-    params: {
-      slug: loaded ? activeProject.slug : '',
-    },
-  };
+  const slug = loaded ? activeProject.slug : '';
 
   useEffect(() => {
     if (page.isHome && open) {
@@ -60,13 +59,9 @@ export default function ProjectPreview() {
       }}
     >
       <ProjectContainer>
-        <TransitionGroup className="teste">
-          <CSSTransition
-            key={projectData.params.slug}
-            timeout={transtionDelay}
-            classNames="page"
-          >
-            <Project match={projectData} disabled={!open} />
+        <TransitionGroup>
+          <CSSTransition key={slug} timeout={transtionDelay} classNames="page">
+            <Project banner={slug} disabled={!open} />
           </CSSTransition>
         </TransitionGroup>
       </ProjectContainer>

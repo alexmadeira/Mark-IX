@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.dd`
   background-image: linear-gradient(
     -90deg,
     #c1c1c1 0%,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { FaInstagram, FaLinkedinIn, FaCodeBranch } from 'react-icons/fa';
 
 import { useBanner } from '~/hooks/Banner';
@@ -15,7 +15,7 @@ import {
   SocialItem,
 } from './styles';
 
-export default function Banner() {
+function Banner() {
   const { open } = useBanner();
 
   return (
@@ -62,3 +62,4 @@ export default function Banner() {
     </Container>
   );
 }
+export default memo(Banner);

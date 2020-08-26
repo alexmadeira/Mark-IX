@@ -53,7 +53,7 @@ export default function Projects() {
             title={title}
             slug={slug}
             logo={logo}
-            preview={preview}
+            preview={preview.title}
           />
         ))}
       </ProjectsList>

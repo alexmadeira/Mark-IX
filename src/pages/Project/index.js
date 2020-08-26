@@ -1,5 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Parallax, useController } from 'react-scroll-parallax';
 
 import PropTypes from 'prop-types';
@@ -11,6 +12,7 @@ import cell from '~/assets/temp/01.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
 import ImageShimmer from '~/components/ImageShimmer';
+import NextProject from '~/components/NextProject';
 import Shimmer from '~/components/Shimmer';
 import { usePage } from '~/hooks/Page';
 
@@ -28,8 +30,8 @@ import {
   TextBox,
 } from './styles';
 
-function Project({ match: { params }, disabled }) {
-  const { slug } = params;
+function Project({ banner, disabled }) {
+  const { slug = banner } = useParams();
 
   const { parallaxController } = useController();
 
@@ -62,8 +64,8 @@ function Project({ match: { params }, disabled }) {
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={project.id && project.banner.file.url}
-              alt={project.id && project.banner.fileName}
+              src={project.id ? project.banner.file.url : ''}
+              alt={project.id ? project.banner.fileName : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>
@@ -81,8 +83,8 @@ function Project({ match: { params }, disabled }) {
         <HeaderTitle>
           {loaded ? (
             <img
-              src={loaded && project.logo.file.url}
-              alt={loaded && project.logo.fileName}
+              src={loaded ? project.logo.file.url : ''}
+              alt={loaded ? project.logo.fileName : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
           ) : (
@@ -117,8 +119,8 @@ function Project({ match: { params }, disabled }) {
         <Parallax y={[-20, 20]} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={loaded && project.preview.file.url}
-              alt={loaded && project.preview.title}
+              src={loaded ? project.preview.file.url : ''}
+              alt={loaded ? project.preview.title : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>
@@ -126,14 +128,14 @@ function Project({ match: { params }, disabled }) {
       </Preview>
       <PreviewScreens>
         <img
-          alt={loaded && project.preview.title}
-          src={loaded && project.preview.file.url}
+          alt={loaded ? project.preview.title : ''}
+          src={loaded ? project.preview.file.url : ''}
           className="top"
           onLoad={e => e.target.classList.add('loaded')}
         />
         <img
-          alt={loaded && project.preview.title}
-          src={loaded && project.preview.file.url}
+          alt={loaded ? project.preview.title : ''}
+          src={loaded ? project.preview.file.url : ''}
           className="bottom"
           onLoad={e => e.target.classList.add('loaded')}
         />
@@ -141,20 +143,19 @@ function Project({ match: { params }, disabled }) {
       <TextBox>
         <p>{project.technologies}</p>
       </TextBox>
-
+      <NextProject />
       <Footer />
     </Container>
   );
 }
 Project.defaultProps = {
   disabled: false,
+  banner: false,
 };
 
 Project.propTypes = {
   disabled: PropTypes.bool,
-  match: PropTypes.shape({
-    params: PropTypes.shape({ slug: PropTypes.string }).isRequired,
-  }).isRequired,
+  banner: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 export default memo(Project);
