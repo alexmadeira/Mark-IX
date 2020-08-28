@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { shade } from 'polished';
 
-import { Spaces, Colors, Fonts } from '~/styles/Metrics';
+import { Spaces, Colors, Fonts } from '../../styles/Metrics';
 
 export const Container = styled.div`
   height: 100%;

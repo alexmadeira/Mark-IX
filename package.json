@@ -21,6 +21,31 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "!src/**/styles.js",
+      "!src/styles/**/*",
+      "!src/services/**/*",
+      "!src/routes/**/*",
+      "!src/store/modules/*.js",
+      "!src/store/*.js",
+      "!src/*.js",
+      "src/pages/**/*.js",
+      "src/components/**/*.js",
+      "src/hooks/**/*.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/src/assets/emojis/"
+    ],
+    "moduleNameMapper": {
+      "^~(.*)$": "<rootDir>/src$1"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -28,6 +53,7 @@
     "axios": "^0.19.0",
     "eslint-plugin-import-helpers": "^1.0.2",
     "immer": "^6.0.3",
+    "customize-cra": "^0.2.14",
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.20",
     "polished": "^3.5.1",
@@ -52,6 +78,8 @@
     "start": "yarn && react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "test:coverage": "react-app-rewired test --coverage --watchAll false",
+    "test:badges": "react-app-rewired test --coverage  --watchAll false && jest-coverage-badges",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
@@ -84,7 +112,6 @@
     "babel-plugin-root-import": "^6.2.0",
     "commitizen": "^4.0.3",
     "cross-env": "^6.0.3",
-    "customize-cra": "^0.2.14",
     "cz-conventional-changelog": "3.0.2",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
@@ -95,8 +122,10 @@
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "husky": "^3.1.0",
+    "jest-coverage-badges": "^1.1.2",
     "json-server": "^0.16.1",
     "prettier": "^1.18.2",
-    "react-app-rewired": "^2.1.3"
+    "react-app-rewired": "^2.1.3",
+    "react-hooks-testing-library": "^0.6.0"
   }
 }
