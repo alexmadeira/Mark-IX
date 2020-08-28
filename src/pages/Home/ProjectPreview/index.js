@@ -44,6 +44,7 @@ export default function ProjectPreview() {
 
   return (
     <Container
+      data-testid="ProjectPreview"
       className={open && 'open'}
       onMouseEnter={() => {
         dispatch(pauseTimer());
