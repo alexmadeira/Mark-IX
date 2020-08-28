@@ -1,6 +1,6 @@
 # Alex Madeira
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5d26bc2c-5123-45a8-9712-e520c9cf1e15/deploy-status)]()
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3d13751c-305a-48f3-8407-a17ff5d00791/deploy-status)](https://app.netlify.com/sites/mark-ix/deploys)
 
 ![License MIT](https://img.shields.io/badge/license-MIT-green)
 
