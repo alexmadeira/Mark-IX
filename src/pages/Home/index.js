@@ -16,7 +16,7 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container data-testid="home-page">
       <Banner />
       <ProjectPreview />
     </Container>

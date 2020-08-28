@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -12,7 +13,6 @@ import {
 
 import { useBanner } from '~/hooks/Banner';
 import { usePage } from '~/hooks/Page';
-import history from '~/services/history';
 
 import { Container } from './styles';
 
@@ -20,6 +20,7 @@ const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
 
 function HomeBack({ children, className }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const page = usePage();
 
   const { bannerPosition, inBanner } = useBanner();

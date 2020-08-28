@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import {
@@ -13,7 +14,6 @@ import { startContinuousLoadBar } from '~/store/modules/loadBar/actions';
 import { useBanner } from '~/hooks/Banner';
 import { usePage } from '~/hooks/Page';
 import Project from '~/pages/Project';
-import history from '~/services/history';
 
 import { Container, ProjectContainer } from './styles';
 
@@ -26,6 +26,7 @@ const transtionDelay = parseInt(
 
 export default function ProjectPreview() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const page = usePage();
 
   const currentPage = useSelector(state => state.page.current);
@@ -43,6 +44,7 @@ export default function ProjectPreview() {
 
   return (
     <Container
+      data-testid="ProjectPreview"
       className={open && 'open'}
       onMouseEnter={() => {
         dispatch(pauseTimer());
