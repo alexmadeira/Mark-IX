@@ -34,6 +34,7 @@ const Contentful = data => {
   };
 
   const init = () => {
+    console.log(data)
     config = { ...config, getContent: GetContent(data.includes) };
   };
 
