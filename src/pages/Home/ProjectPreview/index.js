@@ -33,7 +33,6 @@ export default function ProjectPreview() {
   const { open, loaded, activeProject } = useBanner();
 
   const slug = loaded ? activeProject.fields.slug : '';
-
   useEffect(() => {
     if (page.isHome && open) {
       setTimeout(() => {
@@ -56,7 +55,7 @@ export default function ProjectPreview() {
         dispatch(startContinuousLoadBar());
         dispatch(openProject());
         setTimeout(() => {
-          history.push(`/projeto/${activeProject.fields.slug}`);
+          history.push(`/projeto/${slug}`);
         }, openDelay);
       }}
     >
