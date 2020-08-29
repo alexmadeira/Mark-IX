@@ -3,7 +3,7 @@ const Contentful = data => {
 
   const combine = (items = data.items) => {
     const { getContent } = config;
-    return items.map(({ sys, fields }) => {
+    const t=  items.map(({ sys, fields }) => {
       Object.keys(fields).forEach(field => {
         const temp = {};
         if (typeof fields[field] === 'object') {
@@ -20,6 +20,8 @@ const Contentful = data => {
 
       return { sys, fields: { ...fields, id: sys.id } };
     });
+    console.log(t)
+    return t;
   };
 
   const GetContent = includes => {
@@ -34,7 +36,7 @@ const Contentful = data => {
   };
 
   const init = () => {
-    console.log(data)
+
     config = { ...config, getContent: GetContent(data.includes) };
   };
 
