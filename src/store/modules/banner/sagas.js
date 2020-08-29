@@ -13,7 +13,7 @@ export function* getProjects({ payload }) {
       api.get,
       `/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/entries?access_token=${process.env.REACT_APP_CONTENTFUL_ACCESSTOKEN}&content_type=projeto&limit=${limit}`
     );
-
+console.log('banner saga ',Contentful(data).combine())
     yield put(successRequestProjects(Contentful(data).combine()));
   } catch (err) {
     // console.tron.log(err);
