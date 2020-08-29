@@ -31,7 +31,7 @@ export default function ProjectPreview() {
 
   const currentPage = useSelector(state => state.page.current);
   const { open, loaded, activeProject } = useBanner();
-
+console.log(open, loaded, activeProject)
   const slug = loaded ? activeProject.fields.slug : '';
   useEffect(() => {
     if (page.isHome && open) {
