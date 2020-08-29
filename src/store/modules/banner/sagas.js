@@ -15,8 +15,8 @@ export function* getProjects({ payload }) {
       `/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/entries?access_token=${process.env.REACT_APP_CONTENTFUL_ACCESSTOKEN}&content_type=projeto&limit=${limit}`
     );
       console.log(data)
-
-console.log('banner saga ')
+const sa = Contentful(data).combine();
+console.log(sa);
     yield put(successRequestProjects(Contentful(data).combine()));
   } catch (err) {
     // console.tron.log(err);
