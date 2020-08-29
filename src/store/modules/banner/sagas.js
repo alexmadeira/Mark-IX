@@ -16,7 +16,7 @@ export function* getProjects({ payload }) {
     );
       console.log(data)
 const sa = Contentful(data).combine();
-console.log(sa);
+console.log('---',sa);
     yield put(successRequestProjects(Contentful(data).combine()));
   } catch (err) {
     // console.tron.log(err);
