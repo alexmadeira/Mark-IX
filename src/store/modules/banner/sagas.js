@@ -16,7 +16,7 @@ export function* getProjects({ payload }) {
     );
       console.log(data)
 
-console.log('banner saga ',Contentful(data).combine())
+console.log('banner saga ')
     yield put(successRequestProjects(Contentful(data).combine()));
   } catch (err) {
     // console.tron.log(err);
