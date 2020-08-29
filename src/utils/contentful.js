@@ -1,26 +1,44 @@
-function GetContent(includes) {
-  const include = (type, id) => {
-    return includes[type].find(item => item.sys.id === id);
-  };
-  return { include };
-}
+const Contentful = data => {
+  let config = { getContent: () => {} };
 
-export const combine = data => {
-  const getContent = GetContent(data.includes);
+  const combine = (items = data.items) => {
+    const { getContent } = config;
+    return items.map(({ sys, fields }) => {
+      Object.keys(fields).forEach(field => {
+        const temp = {};
+        if (typeof fields[field] === 'object') {
+          const { id, linkType } = fields[field].sys;
+          const findContent = getContent[linkType];
 
-  return data.items.map(({ sys, fields }) => {
-    Object.keys(fields).forEach(field => {
-      const temp = {};
-      if (typeof fields[field] === 'object') {
-        const { id, linkType } = fields[field].sys;
-        const findContent = getContent.include;
-        const include = findContent(linkType, id);
-        temp[field] = { ...include };
-        fields = { ...fields, ...temp };
-      }
-      return { ...temp };
+          const include = findContent(id);
+
+          temp[field] = { ...include };
+          fields = { ...fields, ...temp };
+        }
+        return { ...temp };
+      });
+
+      return { sys, fields: { ...fields, id: sys.id } };
     });
+  };
 
-    return { sys, fields: { ...fields, id: sys.id } };
-  });
+  const GetContent = includes => {
+    const Asset = id => {
+      return includes.Asset.find(item => item.sys.id === id);
+    };
+    const Entry = id => {
+      const project = includes.Entry.filter(item => item.sys.id === id);
+      return combine(project)[0];
+    };
+    return { Asset, Entry };
+  };
+
+  const init = () => {
+    config = { ...config, getContent: GetContent(data.includes) };
+  };
+
+  init();
+  return { combine };
 };
+
+export default Contentful;
