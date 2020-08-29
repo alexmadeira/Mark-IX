@@ -6,7 +6,7 @@ import { useScollDarkMode } from '~/hooks/Scoll';
 import { Container, Social, SocialItem } from './styles';
 
 export default function Footer() {
-  const darkMode = useScollDarkMode(60);
+  const darkMode = useScollDarkMode('1/19');
   return (
     <Container className={darkMode && 'dark'}>
       <Social>

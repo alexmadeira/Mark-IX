@@ -15,7 +15,7 @@ import { Container, Hamburguer, MenuContainer, MenuItem } from './styles';
 export default function Menu() {
   const dispatch = useDispatch();
   const open = useSelector(state => state.menu.menuOpen);
-  const darkMode = useScollDarkMode(850);
+  const darkMode = useScollDarkMode('14/15');
   const toggleMenu = () => {
     if (open) {
       dispatch(closeMenu());

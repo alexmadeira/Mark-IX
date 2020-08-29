@@ -19,7 +19,8 @@ import {
 export default function Projects() {
   const dispatch = useDispatch();
 
-  const darkMode = useScollDarkMode(100);
+  const darkMode = useScollDarkMode('1/6');
+
   const open = useSelector(state => state.menu.projectsOpen);
   const { loaded, projects } = useSelector(state => state.projects);
 
