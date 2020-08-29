@@ -1,6 +1,7 @@
 import types from './types';
 
 export function requestProjects(limit = 2) {
+  console.log('requestProjects')
   return {
     type: types.requestProjects,
     payload: { limit },
