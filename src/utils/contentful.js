@@ -3,7 +3,7 @@ const Contentful = data => {
 
   const combine = (items = data.items) => {
     const { getContent } = config;
-    const t=  items.map(({ sys, fields }) => {
+    return items.map(({ sys, fields }) => {
       Object.keys(fields).forEach(field => {
         const temp = {};
         if (typeof fields[field] === 'object') {
@@ -20,8 +20,6 @@ const Contentful = data => {
 
       return { sys, fields: { ...fields, id: sys.id } };
     });
-
-    return t;
   };
 
   const GetContent = includes => {
@@ -30,14 +28,12 @@ const Contentful = data => {
     };
     const Entry = id => {
       const project = includes.Entry.filter(item => item.sys.id === id);
-      return project;
-//      return combine(project)[0];
+      return combine(project)[0];
     };
     return { Asset, Entry };
   };
 
   const init = () => {
-
     config = { ...config, getContent: GetContent(data.includes) };
   };
 
