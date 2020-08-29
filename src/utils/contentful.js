@@ -20,7 +20,7 @@ const Contentful = data => {
 
       return { sys, fields: { ...fields, id: sys.id } };
     });
-    console.log(t)
+
     return t;
   };
 
@@ -30,6 +30,7 @@ const Contentful = data => {
     };
     const Entry = id => {
       const project = includes.Entry.filter(item => item.sys.id === id);
+      return project;
       return combine(project)[0];
     };
     return { Asset, Entry };
