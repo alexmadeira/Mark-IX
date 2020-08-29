@@ -26,14 +26,14 @@ export default function Project() {
     <Container className="loaded">
       <Title>
         {loaded ? (
-          <span>{activeBanner.title}</span>
+          <span>{activeBanner.fields.title}</span>
         ) : (
           <Shimmer type="line" h="30px" w="100px" flex={false} />
         )}
 
         <Type>
           {loaded ? (
-            activeBanner.type
+            activeBanner.fields.type
           ) : (
             <Shimmer type="line" h="10px" w="100px" />
           )}
@@ -42,7 +42,7 @@ export default function Project() {
       <Timer />
       <Paragraph>
         {loaded ? (
-          activeBanner.shortDescription
+          activeBanner.fields.shortDescription
         ) : (
           <>
             <Shimmer type="line" h="10px" w="100px" m="0 0 8px 0" />

@@ -64,8 +64,8 @@ function Project({ banner, disabled }) {
         <Parallax y={[-20, 20]} disabled={disabled} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={project.id ? project.banner.file.url : ''}
-              alt={project.id ? project.banner.fileName : ''}
+              src={project.id ? project.banner.fields.file.url : ''}
+              alt={project.id ? project.banner.fields.fileName : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
           </ImageShimmer>
@@ -83,8 +83,8 @@ function Project({ banner, disabled }) {
         <HeaderTitle>
           {loaded ? (
             <img
-              src={loaded ? project.logo.file.url : ''}
-              alt={loaded ? project.logo.fileName : ''}
+              src={loaded ? project.logo.fields.file.url : ''}
+              alt={loaded ? project.logo.fields.fileName : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
           ) : (
@@ -119,7 +119,7 @@ function Project({ banner, disabled }) {
         <Parallax y={[-20, 20]} tagOuter="figure">
           <ImageShimmer h="100vh" w="100vw" flex={false} className="opacity">
             <img
-              src={loaded ? project.preview.file.url : ''}
+              src={loaded ? project.preview.fields.file.url : ''}
               alt={loaded ? project.preview.title : ''}
               onLoad={e => e.target.classList.add('loaded')}
             />
@@ -129,13 +129,13 @@ function Project({ banner, disabled }) {
       <PreviewScreens>
         <img
           alt={loaded ? project.preview.title : ''}
-          src={loaded ? project.preview.file.url : ''}
+          src={loaded ? project.preview.fields.file.url : ''}
           className="top"
           onLoad={e => e.target.classList.add('loaded')}
         />
         <img
           alt={loaded ? project.preview.title : ''}
-          src={loaded ? project.preview.file.url : ''}
+          src={loaded ? project.preview.fields.file.url : ''}
           className="bottom"
           onLoad={e => e.target.classList.add('loaded')}
         />

@@ -25,7 +25,7 @@ jest.mock('~/hooks/Banner', () => ({
   useBanner: () => ({
     open: true,
     loaded: true,
-    activeProject: { slug: '' },
+    activeProject: { fields: { slug: '' } },
   }),
 }));
 

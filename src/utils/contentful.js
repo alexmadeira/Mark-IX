@@ -1,75 +1,26 @@
+function GetContent(includes) {
+  const include = (type, id) => {
+    return includes[type].find(item => item.sys.id === id);
+  };
+  return { include };
+}
+
 export const combine = data => {
+  const getContent = GetContent(data.includes);
+
   return data.items.map(({ sys, fields }) => {
-    Object.keys(fields).map(field => {
-      if (
-        typeof fields[field] === 'object' &&
-        fields[field].sys.linkType === 'Asset'
-      ) {
-        const assetFields = data.includes.Asset.filter(
-          assetItem => assetItem.sys.id === fields[field].sys.id
-        )[0].fields;
-
-        fields[field] = { ...assetFields };
-        return { fields };
+    Object.keys(fields).forEach(field => {
+      const temp = {};
+      if (typeof fields[field] === 'object') {
+        const { id, linkType } = fields[field].sys;
+        const findContent = getContent.include;
+        const include = findContent(linkType, id);
+        temp[field] = { ...include };
+        fields = { ...fields, ...temp };
       }
-      if (
-        typeof fields[field] === 'object' &&
-        fields[field].sys.linkType === 'Entry'
-      ) {
-        const entryFields = data.includes.Entry.filter(
-          entryItem => entryItem.sys.id === fields[field].sys.id
-        )[0].fields;
-
-        fields[field] = { ...entryFields };
-        return { fields };
-      }
-
-      return fields[field];
+      return { ...temp };
     });
 
-    return { id: sys.id, ...fields };
-  });
-};
-
-export const combineAsset = data => {
-  return data.items.map(({ sys, fields }) => {
-    Object.keys(fields).map(field => {
-      if (
-        typeof fields[field] === 'object' &&
-        fields[field].sys.linkType === 'Asset'
-      ) {
-        const assetFields = data.includes.Asset.filter(
-          assetItem => assetItem.sys.id === fields[field].sys.id
-        )[0].fields;
-
-        fields[field] = { ...assetFields };
-        return { fields };
-      }
-
-      return fields[field];
-    });
-
-    return { id: sys.id, ...fields };
-  });
-};
-export const combineEntry = data => {
-  return data.items.map(({ sys, fields }) => {
-    Object.keys(fields).map(field => {
-      if (
-        typeof fields[field] === 'object' &&
-        fields[field].sys.linkType === 'Entry'
-      ) {
-        const assetFields = data.includes.Asset.filter(
-          assetItem => assetItem.sys.id === fields[field].sys.id
-        )[0].fields;
-
-        fields[field] = { ...assetFields };
-        return { fields };
-      }
-
-      return fields[field];
-    });
-
-    return { id: sys.id, ...fields };
+    return { sys, fields: { ...fields, id: sys.id } };
   });
 };

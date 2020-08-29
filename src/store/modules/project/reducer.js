@@ -11,7 +11,7 @@ export default function banner(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
       case types.successRequestProject: {
-        draft.project = action.payload.project;
+        draft.project = action.payload.project.fields;
         draft.loaded = true;
         break;
       }

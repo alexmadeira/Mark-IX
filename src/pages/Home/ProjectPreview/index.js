@@ -32,7 +32,7 @@ export default function ProjectPreview() {
   const currentPage = useSelector(state => state.page.current);
   const { open, loaded, activeProject } = useBanner();
 
-  const slug = loaded ? activeProject.slug : '';
+  const slug = loaded ? activeProject.fields.slug : '';
 
   useEffect(() => {
     if (page.isHome && open) {
@@ -56,7 +56,7 @@ export default function ProjectPreview() {
         dispatch(startContinuousLoadBar());
         dispatch(openProject());
         setTimeout(() => {
-          history.push(`/projeto/${activeProject.slug}`);
+          history.push(`/projeto/${activeProject.fields.slug}`);
         }, openDelay);
       }}
     >
