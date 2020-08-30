@@ -67,6 +67,12 @@ function Timer() {
     loadNextBanner();
   }, [active, dispatch, loadNext, projects.length, timeOut, timerPercent]);
 
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [timeOut]);
+
   return <Container percent={timerPercent} delay={timeOutDelay} />;
 }
 

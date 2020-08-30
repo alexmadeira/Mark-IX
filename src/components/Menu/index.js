@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -8,14 +8,26 @@ import {
   openProjects,
 } from '~/store/modules/menu/actions';
 
-import { useScollDarkMode } from '~/hooks/Scoll';
+import Scroll from '~/utils/scroll';
 
 import { Container, Hamburguer, MenuContainer, MenuItem } from './styles';
 
 export default function Menu() {
   const dispatch = useDispatch();
   const open = useSelector(state => state.menu.menuOpen);
-  const darkMode = useScollDarkMode('14/15');
+
+  const [isDark, setIsDark] = useState(false);
+
+  const toogleMode = useCallback(() => {
+    setIsDark(Scroll.darkMode('14/15'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', toogleMode);
+    return () => {
+      window.removeEventListener('scroll', toogleMode);
+    };
+  });
   const toggleMenu = () => {
     if (open) {
       dispatch(closeMenu());
@@ -30,7 +42,7 @@ export default function Menu() {
   return (
     <Container>
       <Hamburguer
-        className={`${open && 'open'} ${darkMode && 'dark'}`}
+        className={`${open && 'open'} ${isDark && 'dark'}`}
         onClick={toggleMenu}
       />
       <MenuContainer className={open && 'open'}>

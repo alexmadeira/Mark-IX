@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { openProjects, closeProjects } from '~/store/modules/menu/actions';
 import { requestProjects } from '~/store/modules/projects/actions';
 
-import { useScollDarkMode } from '~/hooks/Scoll';
+import Scroll from '~/utils/scroll';
 
 import Project from './Project';
 import {
@@ -19,7 +19,18 @@ import {
 export default function Projects() {
   const dispatch = useDispatch();
 
-  const darkMode = useScollDarkMode('1/6');
+  const [isDark, setIsDark] = useState(false);
+
+  const toogleMode = useCallback(() => {
+    setIsDark(Scroll.darkMode('1/6'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', toogleMode);
+    return () => {
+      window.removeEventListener('scroll', toogleMode);
+    };
+  });
 
   const open = useSelector(state => state.menu.projectsOpen);
   const { loaded, projects } = useSelector(state => state.projects);
@@ -43,9 +54,9 @@ export default function Projects() {
   return (
     <Container>
       <SquaresMenu className={open && 'open'} onClick={toggleProjects}>
-        <SquaresTop className={darkMode && 'dark'} />
-        <SquaresMiddle className={darkMode && 'dark'} />
-        <SquaresBottom className={darkMode && 'dark'} />
+        <SquaresTop className={isDark && 'dark'} />
+        <SquaresMiddle className={isDark && 'dark'} />
+        <SquaresBottom className={isDark && 'dark'} />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
         {projects.map(({ id, title, slug, logo, preview }) => (

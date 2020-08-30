@@ -19,7 +19,7 @@ export const useBanner = () => {
   }, [banner, dispatch]);
 
   const inBanner = banner.projects.find(
-    bannerProject => bannerProject.id === project.id
+    bannerProject => bannerProject.fields.id === project.id
   );
 
   const activeProject = useSelector(

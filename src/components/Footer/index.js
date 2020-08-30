@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { FaInstagram, FaLinkedinIn, FaBitbucket } from 'react-icons/fa';
 
-import { useScollDarkMode } from '~/hooks/Scoll';
+import Scroll from '~/utils/scroll';
 
 import { Container, Social, SocialItem } from './styles';
 
 export default function Footer() {
-  const darkMode = useScollDarkMode('1/19');
+  const [isDark, setIsDark] = useState(false);
+
+  const toogleMode = useCallback(() => {
+    setIsDark(Scroll.darkMode('1/19'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', toogleMode);
+    return () => {
+      window.removeEventListener('scroll', toogleMode);
+    };
+  });
+
   return (
-    <Container className={darkMode && 'dark'}>
+    <Container className={isDark && 'dark'}>
       <Social>
         <SocialItem>
           <a href="/#">
