@@ -23,7 +23,7 @@ export default function Project() {
   }, [dispatch, loaded]);
 
   return (
-    <Container className="loaded">
+    <Container className="loaded" data-testid="Project">
       <Title>
         {loaded ? (
           <span>{activeBanner.fields.title}</span>

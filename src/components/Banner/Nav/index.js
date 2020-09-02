@@ -30,6 +30,7 @@ export default function Nav() {
         return active + 1 > total ? 0 : active + 1;
       case 'prev':
         return active - 1 < 0 ? total : active - 1;
+      /* istanbul ignore next */
       default:
         return active;
     }
