@@ -32,9 +32,14 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/.storybook/**', '**/stories/**'],
+        devDependencies: [
+          '**/.storybook/**',
+          '**/stories/**',
+          '**/__tests__/**',
+        ],
       },
     ],
+
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'react/jsx-one-expression-per-line': 'off',
     'global-require': 'off',

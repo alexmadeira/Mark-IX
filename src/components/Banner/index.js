@@ -19,7 +19,7 @@ function Banner() {
   const { open } = useBanner();
 
   return (
-    <Container className={open && 'open'}>
+    <Container className={open && 'open'} data-testid="Banner">
       <Header>
         <Spotlight>
           <Emoji />

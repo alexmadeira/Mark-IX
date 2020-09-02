@@ -31,7 +31,7 @@ describe('Home Page', () => {
 
     expect(getByTestId('home-page')).toBeTruthy();
   });
-  it('should be finalized load bar', async () => {
+  it('should be finalized load bar', () => {
     render(<Home />);
 
     expect(mockCompleteLoadBar).toHaveBeenCalled();

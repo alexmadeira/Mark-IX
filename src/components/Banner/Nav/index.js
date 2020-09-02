@@ -9,6 +9,7 @@ export default function Nav() {
   const dispatch = useDispatch();
 
   const { active, projects } = useSelector(state => state.banner);
+
   const totalProjects = useSelector(state =>
     state.banner.projects.length.toString().padStart(2, '0')
   );
@@ -33,9 +34,11 @@ export default function Nav() {
         return active;
     }
   }
+
   return (
-    <Container>
+    <Container data-testid="Nav">
       <Button
+        data-testid="next"
         onClick={() => {
           changeBanner(load('next'));
         }}
@@ -47,6 +50,7 @@ export default function Nav() {
         {totalProjects}
       </Step>
       <Button
+        data-testid="prev"
         onClick={() => {
           changeBanner(load('prev'));
         }}
