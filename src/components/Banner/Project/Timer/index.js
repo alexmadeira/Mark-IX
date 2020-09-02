@@ -73,7 +73,13 @@ function Timer() {
     };
   }, [timeOut]);
 
-  return <Container percent={timerPercent} delay={timeOutDelay} />;
+  return (
+    <Container
+      percent={timerPercent}
+      delay={timeOutDelay}
+      data-testid="Timer"
+    />
+  );
 }
 
 export default memo(Timer);
