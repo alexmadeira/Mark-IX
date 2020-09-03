@@ -66,7 +66,7 @@ export default function LoadBar() {
   }, [addProgress, loadBarProgress]);
 
   return (
-    <Container>
+    <Container data-testid="LoadBar">
       <LoadingBar
         height={3}
         color={Colors.Base}

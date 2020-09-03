@@ -4,11 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import {
-  setActiveProject,
-  startTimer,
-  openProject,
-} from '~/store/modules/banner/actions';
+import { setActiveProject, openProject } from '~/store/modules/banner/actions';
 
 import { useBanner } from '~/hooks/Banner';
 import { usePage } from '~/hooks/Page';
@@ -25,7 +21,6 @@ function HomeBack({ children, className }) {
   function backHome() {
     if (inBanner) {
       dispatch(setActiveProject(bannerPosition));
-      dispatch(startTimer(true));
       dispatch(openProject());
     }
 

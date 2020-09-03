@@ -25,7 +25,9 @@ jest.mock('~/hooks/Page', () => ({
 }));
 
 describe('HomeBack Component', () => {
-  beforeEach(() => {});
+  beforeEach(() => {
+    mockedBanner.mockClear();
+  });
 
   it('should be rendered HomeBack', () => {
     const store = mockStore({ banner: { projects: ['projeto'] } });
@@ -50,5 +52,47 @@ describe('HomeBack Component', () => {
 
     fireEvent.click(getByTestId('HomeBack'));
     expect(mockedPush).toBeCalledWith('/');
+  });
+
+  it('should be return to the Banner of the project is Banner', () => {
+    const store = mockStore({ banner: { projects: ['projeto'] } });
+    mockedBanner.mockImplementationOnce(() => ({
+      bannerPosition: 2,
+      inBanner: true,
+    }));
+
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <HomeBack>Back</HomeBack>
+      </Provider>
+    );
+
+    fireEvent.click(getByTestId('HomeBack'));
+    const actions = store.getActions();
+
+    expect(actions.length).toBe(2);
+    expect(actions[0].type).toEqual('@banner/CHANGE_ACTIVE_PROJECT');
+    expect(actions[0].payload).toEqual({ active: 2 });
+
+    expect(actions[1].type).toEqual('@banner/OPEN_PROJECT');
+  });
+
+  it('not should be return to the Banner of the project is not in Banner', () => {
+    const store = mockStore({ banner: { projects: ['projeto'] } });
+    mockedBanner.mockImplementationOnce(() => ({
+      bannerPosition: 2,
+      inBanner: false,
+    }));
+
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <HomeBack>Back</HomeBack>
+      </Provider>
+    );
+
+    fireEvent.click(getByTestId('HomeBack'));
+    const actions = store.getActions();
+
+    expect(actions.length).toBe(0);
   });
 });

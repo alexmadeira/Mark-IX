@@ -6,7 +6,13 @@ import { Container } from './styles';
 
 function ImageShimmer({ children, className, h, w, m, flex }) {
   return (
-    <Container className={`${className} ${flex && 'flex'}`} h={h} w={w} m={m}>
+    <Container
+      data-testid="ImageShimmer"
+      className={`${className} ${flex && 'flex'}`}
+      h={h}
+      w={w}
+      m={m}
+    >
       {children}
     </Container>
   );
