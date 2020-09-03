@@ -7,5 +7,5 @@ import { Container } from './styles';
 export default function Emoji({ ...res }) {
   // const randonNember = useMemo(() => Math.floor(Math.random() * 2) + 1, []);
 
-  return <Container {...res} src={emojis} />;
+  return <Container {...res} src={emojis} data-testid="Emoji" />;
 }

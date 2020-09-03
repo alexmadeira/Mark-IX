@@ -20,7 +20,7 @@ export default function Footer() {
   });
 
   return (
-    <Container className={isDark && 'dark'}>
+    <Container className={isDark && 'dark'} data-testid="Footer">
       <Social>
         <SocialItem>
           <a href="/#">

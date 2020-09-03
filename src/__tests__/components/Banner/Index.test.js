@@ -15,13 +15,18 @@ jest.mock('~/components/Banner/Project', () => {
     return <></>;
   };
 });
+jest.mock('~/components/Emoji', () => {
+  return () => {
+    return <></>;
+  };
+});
 jest.mock('~/components/Banner/Nav', () => {
   return () => {
     return <></>;
   };
 });
 
-describe('Banner components', () => {
+describe('Banner Component', () => {
   beforeEach(() => {
     mockedOpen.mockClear();
   });

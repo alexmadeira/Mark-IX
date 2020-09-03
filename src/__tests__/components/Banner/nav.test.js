@@ -9,8 +9,6 @@ import Nav from '~/components/Banner/Nav';
 const mockStore = configureStore([]);
 
 describe('Banner/Nav Component', () => {
-  beforeEach(() => {});
-
   it('should be rendered Banner/Nav', () => {
     const store = mockStore({ banner: { projects: [], active: 0 } });
 

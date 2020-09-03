@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import {
   setActiveProject,
   startTimer,
-  requestProjects,
   openProject,
 } from '~/store/modules/banner/actions';
 
@@ -16,16 +15,13 @@ import { usePage } from '~/hooks/Page';
 
 import { Container } from './styles';
 
-const numberBanners = process.env.REACT_APP_NUMBER_BANNERS;
-
 function HomeBack({ children, className }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const page = usePage();
+  const { isHome } = usePage();
 
   const { bannerPosition, inBanner } = useBanner();
 
-  const bannerProjects = useSelector(state => state.banner.projects);
   function backHome() {
     if (inBanner) {
       dispatch(setActiveProject(bannerPosition));
@@ -36,16 +32,11 @@ function HomeBack({ children, className }) {
     history.push('/');
   }
 
-  useEffect(() => {
-    if (!bannerProjects.length) {
-      dispatch(requestProjects(numberBanners));
-    }
-  }, [bannerProjects, dispatch]);
-
   return (
     <Container
       type="button"
-      className={`${className} ${page.isHome && 'hidden'}`}
+      className={`${className} ${isHome && 'hidden'}`}
+      data-testid="HomeBack"
       onClick={() => {
         backHome();
       }}
