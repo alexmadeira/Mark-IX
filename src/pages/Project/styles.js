@@ -12,7 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 `;
 
