@@ -1,18 +1,28 @@
 const Contentful = data => {
-  let config = { getContent: () => {} };
+  let config = {
+    getContent: () => {},
+    getFields: sys => {
+      const { id, linkType } = sys;
+      const findContent = config.getContent[linkType];
+      return findContent(id);
+    },
+  };
 
   const combine = (items = data.items) => {
-    const { getContent } = config;
+    const { getFields } = config;
     return items.map(({ sys, fields }) => {
       Object.keys(fields).forEach(field => {
         const temp = {};
         if (typeof fields[field] === 'object') {
-          const { id, linkType } = fields[field].sys;
-          const findContent = getContent[linkType];
-
-          const include = findContent(id);
-
-          temp[field] = { ...include };
+          if (typeof fields[field].sys === 'undefined') {
+            const include = fields[field].map(item => {
+              return getFields(item.sys);
+            });
+            temp[field] = { ...include };
+          } else {
+            const include = getFields(fields[field].sys);
+            temp[field] = { ...include };
+          }
           fields = { ...fields, ...temp };
         }
         return { ...temp };
