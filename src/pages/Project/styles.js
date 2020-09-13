@@ -38,7 +38,7 @@ export const Banner = styled.div`
       object-fit: cover;
       object-position: center;
       opacity: 0;
-      transition: ${openDelay}ms;
+      transition: opacity ${openDelay}ms ease;
       &.loaded {
         opacity: 1;
       }
@@ -59,7 +59,7 @@ export const Name = styled.h1`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: ${openDelay}ms;
+  transition: opacity ${openDelay}ms ease;
   &.hidden {
     opacity: 0;
   }
@@ -68,6 +68,7 @@ export const Name = styled.h1`
 export const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
+  width: 100%;
   max-width: 1600px;
   margin: calc(${Spaces.BaseMargin}*10) auto 0 auto;
   @media (max-width: 780px) {
@@ -77,13 +78,13 @@ export const Header = styled.div`
   }
 `;
 
-export const HeaderTitle = styled.h2`
+export const HeaderLogo = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: calc(${Spaces.BasePadding}*3);
-  font-size: 5rem;
-  line-height: calc(5rem + 10px);
+  flex: 1;
+  object-fit: contain;
   @media (max-width: 780px) {
     padding: calc(${Spaces.BasePadding});
   }
@@ -103,22 +104,49 @@ export const HeaderDescription = styled.p`
   }
 `;
 
-export const MobileList = styled.ul`
+export const Technologies = styled.p`
+  padding: ${Spaces.BasePadding} calc(${Spaces.BasePadding}*3);
   display: flex;
-  max-width: 100%;
-  margin: calc(${Spaces.BaseMargin}*5) auto 0 auto;
-  padding: calc(${Spaces.BasePadding}*5);
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
-  overflow-x: scroll;
-  @media (max-width: 1400) {
-    justify-content: center;
-    overflow: initial;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  a {
+    margin-right: ${Spaces.BaseMargin};
+    img {
+      width: 5rem;
+      transition: all ${openDelay}ms ease;
+      filter: grayscale(1);
+    }
+    &:hover {
+      img {
+        filter: grayscale(0);
+      }
+    }
   }
+`;
+
+export const Technology = styled.span`
+  margin-right: ${Spaces.BaseMargin};
+`;
+
+export const MobileList = styled.ul`
+  display: flex;
+  width: 100%;
+
+  margin: calc(${Spaces.BaseMargin}*5) auto 0 auto;
+  padding: calc(${Spaces.BasePadding}*5);
+  flex-wrap: wrap;
   li {
     list-style: none;
-    margin: 0 calc(${Spaces.BaseMargin}*3);
+    flex: 1;
+    min-width: 320px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -134,7 +162,7 @@ export const Preview = styled.div`
       object-fit: cover;
       object-position: center;
       opacity: 0;
-      transition: ${openDelay}ms;
+      transition: opacity ${openDelay}ms ease;
       &.loaded {
         opacity: 1;
       }
@@ -154,7 +182,7 @@ export const PreviewScreens = styled.div`
   img {
     height: 55%;
     opacity: 0;
-    transition: ${openDelay}ms;
+    transition: opacity ${openDelay}ms ease;
     position: absolute;
     left: 50%;
     &.top {
@@ -178,18 +206,5 @@ export const PreviewScreens = styled.div`
     &.right {
       bottom: 0;
     }
-  }
-`;
-
-export const TextBox = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: ${Spaces.BasePadding} calc(${Spaces.BasePadding} * 20);
-  & > * {
-    margin-bottom: ${Spaces.BasePadding};
-    font-size: 2rem;
   }
 `;

@@ -16,9 +16,12 @@ const Contentful = data => {
         if (typeof fields[field] === 'object') {
           if (typeof fields[field].sys === 'undefined') {
             const include = fields[field].map(item => {
-              return getFields(item.sys);
+              if (item.sys) {
+                return getFields(item.sys);
+              }
+              return item;
             });
-            temp[field] = { ...include };
+            temp[field] = [...include];
           } else {
             const include = getFields(fields[field].sys);
             temp[field] = { ...include };

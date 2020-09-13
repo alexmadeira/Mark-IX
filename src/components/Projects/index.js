@@ -59,13 +59,13 @@ export default function Projects() {
         <SquaresBottom className={isDark && 'dark'} />
       </SquaresMenu>
       <ProjectsList className={open && 'open'}>
-        {projects.map(({ id, title, slug, logo, preview }) => (
+        {projects.map(({ fields: { id, title, slug, logo, preview } }) => (
           <Project
             key={id}
             title={title}
             slug={slug}
             logo={logo}
-            preview={preview.title}
+            preview={preview}
           />
         ))}
       </ProjectsList>

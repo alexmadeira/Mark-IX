@@ -27,7 +27,7 @@ function Project({ title, slug, logo, preview }) {
         >
           <source src={preview} />
         </Preview>
-        <Logo src={logo.file.url} alt={title} />
+        <Logo src={logo.fields.file.url} alt={title} />
       </Link>
     </Container>
   );

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { completeLoadBar } from '~/store/modules/loadBar/actions';
 import { requestProject } from '~/store/modules/project/actions';
 
-import cell from '~/assets/temp/01.png';
 import Footer from '~/components/Footer';
 import HomeBack from '~/components/HomeBack';
 import ImageShimmer from '~/components/ImageShimmer';
@@ -22,12 +21,13 @@ import {
   Banner,
   Name,
   Header,
-  HeaderTitle,
+  HeaderLogo,
   HeaderDescription,
   MobileList,
   Preview,
   PreviewScreens,
-  TextBox,
+  Technologies,
+  Technology,
 } from './styles';
 
 function Project({ banner, disabled }) {
@@ -80,17 +80,15 @@ function Project({ banner, disabled }) {
       </Banner>
 
       <Header>
-        <HeaderTitle>
-          {loaded ? (
-            <img
-              src={loaded ? project.logo.fields.file.url : ''}
-              alt={loaded ? project.logo.fields.fileName : ''}
-              onLoad={e => e.target.classList.add('loaded')}
-            />
-          ) : (
-            <Shimmer type="line" h="70px" w="300px" flex={false} />
-          )}
-        </HeaderTitle>
+        {loaded ? (
+          <HeaderLogo
+            src={loaded ? project.logo.fields.file.url : ''}
+            alt={loaded ? project.logo.fields.fileName : ''}
+            onLoad={e => e.target.classList.add('loaded')}
+          />
+        ) : (
+          <Shimmer type="line" h="70px" w="300px" flex={false} />
+        )}
 
         <HeaderDescription>
           {loaded ? (
@@ -104,16 +102,19 @@ function Project({ banner, disabled }) {
           )}
         </HeaderDescription>
       </Header>
+      <Technologies>
+        {loaded &&
+          project.technologies.map(technology => (
+            <Technology>{technology.fields.name}</Technology>
+          ))}
+      </Technologies>
       <MobileList>
-        <li>
-          <img src={cell} alt="" />
-        </li>
-        <li>
-          <img src={cell} alt="" />
-        </li>
-        <li>
-          <img src={cell} alt="" />
-        </li>
+        {loaded &&
+          project.mobile.map(({ fields }) => (
+            <li>
+              <img src={fields.file.url} alt="" />
+            </li>
+          ))}
       </MobileList>
       <Preview>
         <Parallax y={[-20, 20]} tagOuter="figure">
@@ -140,9 +141,7 @@ function Project({ banner, disabled }) {
           onLoad={e => e.target.classList.add('loaded')}
         />
       </PreviewScreens>
-      <TextBox>
-        <p>{project.technologies}</p>
-      </TextBox>
+
       <NextProject />
       <Footer />
     </Container>

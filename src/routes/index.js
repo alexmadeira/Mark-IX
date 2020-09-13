@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Home from '~/pages/Home';
 import Project from '~/pages/Project';
 import Sobre from '~/pages/Sobre';
+import Tecnology from '~/pages/Tecnology';
 
 import Route from './Route';
 
@@ -29,6 +30,11 @@ export default function Routes() {
               <Route
                 path="/projeto/:slug"
                 component={Project}
+                location={location}
+              />
+              <Route
+                path="/tecnologia/:slug"
+                component={Tecnology}
                 location={location}
               />
             </Switch>
