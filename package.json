@@ -53,7 +53,7 @@
     "axios": "^0.19.0",
     "customize-cra": "^0.2.14",
     "eslint-plugin-import-helpers": "^1.0.2",
-    "immer": "^6.0.3",
+    "immer": "^8.0.1",
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.20",
     "polished": "^3.5.1",
